@@ -1,4 +1,4 @@
- package Tema_ISP;
+package Tema_ISP;
 
 public class Materie {
 
@@ -7,22 +7,18 @@ public class Materie {
 	private DesfasurareMaterie modDesfasurareMaterie;
 	private Grupa grupa;
 	private Profesor profesor;
-	
-	
+
 	public void afisare() {
 		System.out.println("Materie" + this.numeMaterie);
 	}
 
-	
 	public String getNumeMaterie() {
 		return numeMaterie;
 	}
 
-
 	public void setNumeMaterie(String numeMaterie) {
 		this.numeMaterie = numeMaterie;
 	}
-
 
 	public void adaugareDurata(int durata) {
 		this.durata = durata;
@@ -39,11 +35,9 @@ public class Materie {
 	public void adaugareModDesfasurareMaterie(DesfasurareMaterie desf) {
 		this.modDesfasurareMaterie = desf;
 	}
-	
+
 	public void adaugareGrupa(Grupa grupa) {
 		this.grupa = grupa;
 	}
-	
 
-	
 };

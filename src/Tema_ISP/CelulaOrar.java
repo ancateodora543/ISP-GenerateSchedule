@@ -1,6 +1,5 @@
 package Tema_ISP;
 
-
 public class CelulaOrar {
 
 	private Sala sala;

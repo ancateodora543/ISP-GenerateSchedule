@@ -4,30 +4,27 @@ import java.util.ArrayList;
 
 public class Secretar {
 
-	
 	public void creareOrar(CelulaOrar orarCelula, Orar orarFinal) {
 	}
 
-
 	public void creareContGrupa(Grupa grupa) {
-		
+
 		String u = null;
 		String p = "parolaGrupa";
-		
-		if(grupa.getUser() == null) {
+
+		if (grupa.getUser() == null) {
 			u = grupa.getNume().replaceAll(" ", "").toLowerCase();
-			if(Aplicatie.getConturi().containsKey(u))
+			if (Aplicatie.getConturi().containsKey(u))
 				u = u + u.charAt(u.length() - 1);
 		}
-		
+
 		Aplicatie.getConturi().put(u, p);
 	}
 
-
 	public void stergereContGrupa(Grupa grupa) {
-		
+
 		String user = grupa.getUser();
-		if(user == null)
+		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
 			Aplicatie.getConturi().remove(user);
@@ -35,45 +32,42 @@ public class Secretar {
 		}
 	}
 
-
 	public void modificareContStudent(Grupa grupa, String criteriu, String valoareNoua) {
-		switch(criteriu){
-			case "nume": {
-				grupa.setNume(valoareNoua);
-				System.out.println("Nume modificat");
-				break;
-			}
-			case "serie": {
-				grupa.setSerie(valoareNoua);
-				System.out.println("Serie modificata");
-				break;
-			}
-			default: {
-				System.out.println("Camp inexistent");
-				break;
-			}
+		switch (criteriu) {
+		case "nume": {
+			grupa.setNume(valoareNoua);
+			System.out.println("Nume modificat");
+			break;
+		}
+		case "serie": {
+			grupa.setSerie(valoareNoua);
+			System.out.println("Serie modificata");
+			break;
+		}
+		default: {
+			System.out.println("Camp inexistent");
+			break;
+		}
 		}
 	}
-
 
 	public void creareContProfesor(Profesor prof) {
 		String u = null;
 		String p = "parolaGrupa";
-		
-		if(prof.getUser() == null) {
+
+		if (prof.getUser() == null) {
 			u = prof.getNume().replaceAll(" ", "").toLowerCase();
-			if(Aplicatie.getConturi().containsKey(u))
+			if (Aplicatie.getConturi().containsKey(u))
 				u = u + u.charAt(u.length() - 1);
 		}
-		
-		Aplicatie.getConturi().put(u, p);
-		
-	}
 
+		Aplicatie.getConturi().put(u, p);
+
+	}
 
 	public void stergereContProfesor(Profesor profesor) {
 		String user = profesor.getUser();
-		if(user == null)
+		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
 			Aplicatie.getConturi().remove(user);
@@ -81,9 +75,8 @@ public class Secretar {
 		}
 	}
 
-
 	public void modificareContProfesor(Profesor profesor, String criteriu, String valoareNoua) {
-		switch(criteriu){
+		switch (criteriu) {
 		case "nume": {
 			profesor.setNume(valoareNoua);
 			System.out.println("Nume modificat");
@@ -93,21 +86,20 @@ public class Secretar {
 			System.out.println("Camp inexistent");
 			break;
 		}
-	}
+		}
 	}
 
 	public void adaugareMaterieGrupa(Grupa grupa, String materie) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
-		
-		if(materiiGrupa.contains(materie))
+
+		if (materiiGrupa.contains(materie))
 			System.out.println("Materia exista deja");
 		else {
 			materiiGrupa.add(materie);
 			System.out.println("Materie adaugata");
-		}		
+		}
 	}
-	
-	
+
 	public void salvareOrar() {
 	}
 

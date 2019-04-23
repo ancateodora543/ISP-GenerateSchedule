@@ -18,7 +18,7 @@ public class Profesor {
 	private String user;
 	private String parola;
 	private boolean logat;
-	private ArrayList <Materie> materii = new ArrayList<Materie>();
+	private ArrayList<Materie> materii = new ArrayList<Materie>();
 
 	InputStreamReader isr = new InputStreamReader(System.in);
 	BufferedReader br = new BufferedReader(isr);
@@ -67,11 +67,11 @@ public class Profesor {
 	}
 
 	public void adaugareMaterie(Materie materie) {
-		this.materii.add(materie);	
+		this.materii.add(materie);
 	}
 
 	public void stergereMaterie(Materie materie) {
-		if(materii.contains(materie))
+		if (materii.contains(materie))
 			materii.remove(materie);
 	}
 
@@ -98,7 +98,5 @@ public class Profesor {
 	public void setNume(String nume) {
 		this.nume = nume;
 	}
-	
-	
-	
+
 };
