@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Secretar {
 
 	public void creareOrar(CelulaOrar orarCelula, Orar orarFinal) {
+		
 	}
 
 	public void creareContGrupa(Grupa grupa) {

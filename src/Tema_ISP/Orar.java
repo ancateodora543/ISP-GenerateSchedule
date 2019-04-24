@@ -8,6 +8,7 @@ import java.util.Map;
 public class Orar {
 
 	private ArrayList<CelulaOrar> celuleOrar = new ArrayList<CelulaOrar>();
+	private Map<String, List<CelulaOrar>> orarZi = new HashMap<String, List<CelulaOrar>>();
 
 	public void adaugareCelula(CelulaOrar celula) {
 		this.celuleOrar.add(celula);
@@ -30,9 +31,25 @@ public class Orar {
 		}
 	}
 
-	public void creare(CelulaOrar celula, String zi) {
-		Map<String, List<CelulaOrar>> orar = new HashMap<String, List<CelulaOrar>>();
-		orar.put(zi, celuleOrar);
-
+	public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
+		if (celuleOrar == null) {
+			adaugareCelula(celula);
+			orarZi.put(zi, celuleOrar);
+		} else {
+			if (!celuleOrar.contains(celula)) {
+				adaugareCelula(celula);
+			}
+			orarZi.put(zi, celuleOrar);
+		}
+		return orarZi;
 	}
+
+	public int numarareOreZi(String zi) {
+		int sum = 0;
+		for (CelulaOrar o : orarZi.get(zi)) {
+			sum = sum + o.getMaterie().getDurata();
+		}
+		return sum;
+	}
+
 }

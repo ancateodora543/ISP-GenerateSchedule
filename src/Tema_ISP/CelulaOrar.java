@@ -1,6 +1,6 @@
 package Tema_ISP;
 
-public class CelulaOrar {
+public class CelulaOrar{
 
 	private Sala sala;
 	private Materie materie;
@@ -11,6 +11,22 @@ public class CelulaOrar {
 
 	public void adaugareSala(Sala sala) {
 		this.sala = sala;
+	}
+	
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+	public Materie getMaterie() {
+		return materie;
+	}
+
+	public void setMaterie(Materie materie) {
+		this.materie = materie;
 	}
 
 	public void afisare() {

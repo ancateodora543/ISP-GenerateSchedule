@@ -8,6 +8,10 @@ public class Materie {
 	private Grupa grupa;
 	private Profesor profesor;
 
+	public int getDurata() {
+		return durata;
+	}
+
 	public void afisare() {
 		System.out.println("Materie" + this.numeMaterie);
 	}
