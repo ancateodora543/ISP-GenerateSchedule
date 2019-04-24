@@ -19,7 +19,7 @@ public class Profesor {
 	private String parola;
 	private boolean logat;
 	private ArrayList<Materie> materii = new ArrayList<Materie>();
-
+	private boolean disponibilitate = true;
 	InputStreamReader isr = new InputStreamReader(System.in);
 	BufferedReader br = new BufferedReader(isr);
 
@@ -99,4 +99,12 @@ public class Profesor {
 		this.nume = nume;
 	}
 
+	public boolean isDisponibilitate() {
+		return disponibilitate;
+	}
+
+	public void setDisponibilitate(boolean disponibilitate) {
+		this.disponibilitate = disponibilitate;
+	}
+	
 };

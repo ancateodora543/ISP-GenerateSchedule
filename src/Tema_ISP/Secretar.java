@@ -8,7 +8,7 @@ import java.util.Map;
 public class Secretar {
 	 Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
 	
-	 public void creareOrar(CelulaOrar orarCelula, Orar orarFinal, Grupa grupa) {
+	 public void creareOrar(Orar orarFinal, Grupa grupa) {
 		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
 		
 	}

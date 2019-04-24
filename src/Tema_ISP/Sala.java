@@ -38,4 +38,10 @@ public class Sala {
 	public void adaugareNumeSala(String numeSala) {
 		this.numeSala = numeSala;
 	}
+
+	public boolean isDisponibilitate() {
+		return disponibilitate;
+	}
+
+	
 };

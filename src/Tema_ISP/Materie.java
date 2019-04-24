@@ -44,4 +44,13 @@ public class Materie {
 		this.grupa = grupa;
 	}
 
+	public Profesor getProfesor() {
+		return profesor;
+	}
+
+	public Grupa getGrupa() {
+		return grupa;
+	}
+
+	
 };

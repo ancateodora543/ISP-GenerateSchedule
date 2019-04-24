@@ -16,6 +16,15 @@ public class Grupa {
 	private boolean logat = false;
 	private ArrayList<String> listaMaterii = new ArrayList<String>();
 	private ArrayList<Materie> materii = new ArrayList<Materie>();
+	private boolean dispobilitate = true;
+	
+	public boolean isDispobilitate() {
+		return dispobilitate;
+	}
+
+	public void setDispobilitate(boolean dispobilitate) {
+		this.dispobilitate = dispobilitate;
+	}
 
 	public void afisareStudent() {
 		System.out.println("Student: " + nume);

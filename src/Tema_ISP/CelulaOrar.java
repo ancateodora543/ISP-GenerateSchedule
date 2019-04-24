@@ -1,9 +1,14 @@
 package Tema_ISP;
 
-public class CelulaOrar{
+public class CelulaOrar {
 
 	private Sala sala;
 	private Materie materie;
+
+	public CelulaOrar(Sala sala, Materie materie) {
+		this.sala = sala;
+		this.materie = materie;
+	}
 
 	public void adaugareMaterie(Materie materie) {
 		this.materie = materie;
@@ -12,7 +17,7 @@ public class CelulaOrar{
 	public void adaugareSala(Sala sala) {
 		this.sala = sala;
 	}
-	
+
 	public Sala getSala() {
 		return sala;
 	}
@@ -32,5 +37,14 @@ public class CelulaOrar{
 	public void afisare() {
 		System.out.println("Materie: " + materie.getNumeMaterie().toUpperCase());
 		System.out.println("Sala: " + sala.getNumeSala().toUpperCase());
+	}
+
+	public boolean verificareCelulaOrar() {
+		if (sala.isDisponibilitate() && materie.getProfesor().isDisponibilitate()
+				&& materie.getGrupa().isDispobilitate()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 };

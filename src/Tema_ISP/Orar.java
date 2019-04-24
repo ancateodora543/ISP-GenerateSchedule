@@ -11,14 +11,16 @@ public class Orar {
 	private Map<String, List<CelulaOrar>> orarZi = new HashMap<String, List<CelulaOrar>>();
 
 	public void adaugareCelula(CelulaOrar celula) {
-		this.celuleOrar.add(celula);
+		if(celula.verificareCelulaOrar())
+			this.celuleOrar.add(celula);
+		else
+			System.out.println("Nu a fost gasita o asemenea celula!");
 
 	}
 
 	public Map<String, List<CelulaOrar>> getOrarZi() {
 		return orarZi;
 	}
-
 
 	public void stergereCelula(CelulaOrar celula) {
 		if (this.celuleOrar.contains(celula)) {
