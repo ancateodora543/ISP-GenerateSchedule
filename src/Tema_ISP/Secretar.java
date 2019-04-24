@@ -1,10 +1,15 @@
 package Tema_ISP;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Secretar {
-
-	public void creareOrar(CelulaOrar orarCelula, Orar orarFinal) {
+	 Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
+	
+	 public void creareOrar(CelulaOrar orarCelula, Orar orarFinal, Grupa grupa) {
+		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
 		
 	}
 

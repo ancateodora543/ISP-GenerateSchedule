@@ -15,6 +15,11 @@ public class Orar {
 
 	}
 
+	public Map<String, List<CelulaOrar>> getOrarZi() {
+		return orarZi;
+	}
+
+
 	public void stergereCelula(CelulaOrar celula) {
 		if (this.celuleOrar.contains(celula)) {
 			celuleOrar.remove(celula);
@@ -32,16 +37,19 @@ public class Orar {
 	}
 
 	public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
-		if (celuleOrar == null) {
-			adaugareCelula(celula);
-			orarZi.put(zi, celuleOrar);
-		} else {
-			if (!celuleOrar.contains(celula)) {
+		while (numarareOreZi(zi) < 8) {
+			if (celuleOrar == null) {
 				adaugareCelula(celula);
+				orarZi.put(zi, celuleOrar);
+			} else {
+				if (!celuleOrar.contains(celula)) {
+					adaugareCelula(celula);
+				}
+				orarZi.put(zi, celuleOrar);
 			}
-			orarZi.put(zi, celuleOrar);
 		}
 		return orarZi;
+
 	}
 
 	public int numarareOreZi(String zi) {
