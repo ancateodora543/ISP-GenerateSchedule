@@ -40,11 +40,7 @@ public class CelulaOrar {
 	}
 
 	public boolean verificareCelulaOrar() {
-		if (sala.isDisponibilitate() && materie.getProfesor().isDisponibilitate()
-				&& materie.getGrupa().isDispobilitate()) {
-			return true;
-		} else {
-			return false;
-		}
+		return sala.isDisponibilitate() && materie.getProfesor().isDisponibilitate()&& materie.getGrupa().isDispobilitate();
 	}
+	
 };

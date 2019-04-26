@@ -7,6 +7,17 @@ public class Materie {
 	private DesfasurareMaterie modDesfasurareMaterie;
 	private Grupa grupa;
 	private Profesor profesor;
+	
+	public Materie(Grupa grupa, String nume, DesfasurareMaterie desf, Profesor prof) {
+		this.grupa = grupa;
+		this.numeMaterie = nume;
+		this.modDesfasurareMaterie = desf;
+		if(desf == DesfasurareMaterie.curs)
+			this.durata = 3;
+		else 
+			this.durata = 2;	
+		this.profesor = prof;
+	}
 
 	public int getDurata() {
 		return durata;

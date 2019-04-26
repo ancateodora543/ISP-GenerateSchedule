@@ -38,7 +38,7 @@ public class Orar {
 		}
 	}
 
-	public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
+	/*public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
 		while (numarareOreZi(zi) < 8) {
 			if (celuleOrar == null) {
 				adaugareCelula(celula);
@@ -53,6 +53,10 @@ public class Orar {
 		return orarZi;
 
 	}
+	
+	public public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi){
+		
+	}*/
 
 	public int numarareOreZi(String zi) {
 		int sum = 0;

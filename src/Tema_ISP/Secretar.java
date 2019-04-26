@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class Secretar {
 	 Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
+	 
+	 ArrayList <String> materiiPredefinite = new ArrayList <String>();
 	
 	 public void creareOrar(Orar orarFinal, Grupa grupa) {
 		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
@@ -59,7 +61,7 @@ public class Secretar {
 
 	public void creareContProfesor(Profesor prof) {
 		String u = null;
-		String p = "parolaGrupa";
+		String p = "parolaProf";
 
 		if (prof.getUser() == null) {
 			u = prof.getNume().replaceAll(" ", "").toLowerCase();
@@ -105,6 +107,24 @@ public class Secretar {
 			System.out.println("Materie adaugata");
 		}
 	}
+	
+	public void adaugareMateriePredefinita(String materie) {
+		if(!materiiPredefinite.contains(materie))
+			materiiPredefinite.add(materie);
+		else
+			System.out.println("Materia exista deja");
+	}
+	
+	/*public void creareCelulaOrar() {
+		for (String m : materiiPredefinite) {
+			if(!grupa.getListaMaterii().contains(m))
+				continue;
+			
+			
+			
+		}
+		
+	}*/
 
 	public void salvareOrar() {
 	}

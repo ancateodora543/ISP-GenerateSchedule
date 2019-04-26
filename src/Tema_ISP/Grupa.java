@@ -15,7 +15,7 @@ public class Grupa {
 	private String parola;
 	private boolean logat = false;
 	private ArrayList<String> listaMaterii = new ArrayList<String>();
-	private ArrayList<Materie> materii = new ArrayList<Materie>();
+	//private ArrayList<Materie> materii = new ArrayList<Materie>();
 	private boolean dispobilitate = true;
 	
 	public boolean isDispobilitate() {
@@ -95,14 +95,6 @@ public class Grupa {
 
 	public void setSerie(String serie) {
 		this.serie = serie;
-	}
-
-	public ArrayList<Materie> getMaterii() {
-		return materii;
-	}
-
-	public void setMaterii(ArrayList<Materie> materii) {
-		this.materii = materii;
 	}
 
 	public ArrayList<String> getListaMaterii() {
