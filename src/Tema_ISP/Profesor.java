@@ -18,7 +18,7 @@ public class Profesor {
 	private String user;
 	private String parola;
 	private boolean logat;
-	private ArrayList<Materie> materii = new ArrayList<Materie>();
+	private ArrayList<String> materii = new ArrayList<String>();
 	private boolean disponibilitate = true;
 	InputStreamReader isr = new InputStreamReader(System.in);
 	BufferedReader br = new BufferedReader(isr);
@@ -26,6 +26,12 @@ public class Profesor {
 	public void afisareProfesor() {
 		System.out.println("Profesor: " + this.nume);
 	}
+
+	
+	public ArrayList<String> getMaterii() {
+		return materii;
+	}
+
 
 	public void logareProfesor() {
 		HashMap<String, String> hm = Aplicatie.getConturi();
@@ -66,11 +72,11 @@ public class Profesor {
 	public void vizualizareOrarProfesor() {
 	}
 
-	public void adaugareMaterie(Materie materie) {
+	public void adaugareMaterie(String materie) {
 		this.materii.add(materie);
 	}
 
-	public void stergereMaterie(Materie materie) {
+	public void stergereMaterie(String materie) {
 		if (materii.contains(materie))
 			materii.remove(materie);
 	}

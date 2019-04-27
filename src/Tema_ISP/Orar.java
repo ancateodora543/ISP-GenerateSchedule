@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Orar {
 
-	private ArrayList<CelulaOrar> celuleOrar = new ArrayList<CelulaOrar>();
+	private static ArrayList<CelulaOrar> celuleOrar = new ArrayList<CelulaOrar>();
 	private Map<String, List<CelulaOrar>> orarZi = new HashMap<String, List<CelulaOrar>>();
 
 	public void adaugareCelula(CelulaOrar celula) {
@@ -17,6 +17,17 @@ public class Orar {
 			System.out.println("Nu a fost gasita o asemenea celula!");
 
 	}
+
+	
+	public static ArrayList<CelulaOrar> getCeluleOrar() {
+		return celuleOrar;
+	}
+
+
+	public static void setCeluleOrar(ArrayList<CelulaOrar> celuleOrar) {
+		Orar.celuleOrar = celuleOrar;
+	}
+
 
 	public Map<String, List<CelulaOrar>> getOrarZi() {
 		return orarZi;
@@ -65,5 +76,6 @@ public class Orar {
 		}
 		return sum;
 	}
+
 
 }

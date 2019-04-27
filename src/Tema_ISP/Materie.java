@@ -9,6 +9,11 @@ public class Materie {
 	private Profesor profesor;
 	
 	public Materie(Grupa grupa, String nume, DesfasurareMaterie desf, Profesor prof) {
+		this(grupa,nume,desf);
+		this.profesor = prof;
+	}
+	
+	public Materie(Grupa grupa, String nume, DesfasurareMaterie desf) {
 		this.grupa = grupa;
 		this.numeMaterie = nume;
 		this.modDesfasurareMaterie = desf;
@@ -16,7 +21,6 @@ public class Materie {
 			this.durata = 3;
 		else 
 			this.durata = 2;	
-		this.profesor = prof;
 	}
 
 	public int getDurata() {

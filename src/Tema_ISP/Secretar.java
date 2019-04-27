@@ -8,6 +8,14 @@ import java.util.Map;
 public class Secretar {
 	 Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
 	 
+	 
+	 ArrayList <Profesor> profi = new ArrayList <Profesor>();
+	 
+	 //toate obiectele Materie create
+	 ArrayList <Materie> materii = new ArrayList <Materie>();
+	 
+	 
+	 
 	 ArrayList <String> materiiPredefinite = new ArrayList <String>();
 	
 	 public void creareOrar(Orar orarFinal, Grupa grupa) {
@@ -125,6 +133,35 @@ public class Secretar {
 		}
 		
 	}*/
+	
+	public void creareMaterie(Grupa grupa) {
+		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
+		Materie materieNoua = null;
+		
+		for(String materiePredefinita : materiiPredefinite) {
+			if(materiiGrupa.contains(materiePredefinita)) {
+				//verificam daca exista deja o materia cu acest nume pt grupa respectiva
+				boolean ok = true;
+				for(CelulaOrar celula : Orar.getCeluleOrar()) {
+					Materie m = celula.getMaterie();
+					if( m.getNumeMaterie().equals(materiePredefinita)){
+						ok = false;
+						break;
+					}
+				}
+				if(ok) {
+					materieNoua = new Materie(grupa, materiePredefinita, DesfasurareMaterie.curs);
+					for (Profesor prof : profi)
+						if(prof.getMaterii().contains(materiePredefinita)) {
+							materieNoua.adaugareProfesor(prof);
+							break;
+						}
+				}						
+			}
+			if(materieNoua != null)
+				materii.add(materieNoua);
+		}
+	}
 
 	public void salvareOrar() {
 	}
