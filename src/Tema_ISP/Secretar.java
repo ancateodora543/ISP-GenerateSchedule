@@ -22,7 +22,9 @@ public class Secretar {
 	 
 	 
 	 ArrayList <String> materiiPredefinite = new ArrayList <String>();
-	
+	 ArrayList <String> numeSali = new ArrayList <String>();
+	 String[] zileSaptamana = {"Luni", "Marti", "Miercuri", "Joi", "Vineri"};
+	 
 	 public void creareOrar(Orar orarFinal, Grupa grupa) {
 		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
 		
@@ -128,31 +130,34 @@ public class Secretar {
 			System.out.println("Materia exista deja");
 	}
 	
-	//parcurgem lista cu materiile create si pentru fiecare materie de acolo o sa creem o celula de orar
-	/*public void creareCelulaOrar(Materie m) {
-		CelulaOrar celulaNoua = null;
-		for (Sala sala : sali)
-			if(sala.isDisponibilitate()) {
-				celulaNoua.adaugareMaterie(m);
-				celulaNoua.adaugareSala(sala);
-				
-			
-			}
-				
-				
-			
-			
-			
-		
-		
-	}*/
-	
-	public void creareSala(Materie m) {
-		Sala salaNoua = null;
-		
-		salaNoua.setZi("Luni");
-		
+	public void adaugareNumeSala(String sala) {
+		if(!numeSali.contains(sala))
+			materiiPredefinite.add(sala);
+		else
+			System.out.println("Sala exista deja");
 	}
+	
+	//parcurgem lista cu materiile create si pentru fiecare materie de acolo o sa creem o celula de orar
+	public void creareCelulaOrar(Materie m) {
+		CelulaOrar celulaNoua = null;
+		for (String numeSala : numeSali) {
+			Sala salaNoua = new Sala();
+			salaNoua.adaugareNumeSala(numeSala);
+			for (Sala sala : sali) 
+				if(sala.getNumeSala().equals(numeSala)) {
+					//aici voiam sa vad cand sala asta e ocupata (exista mai multe obiecte de tip Sala pentru acelasi
+					// nume de sala => dar nu stiu cum sa fac asta
+					
+				}
+			
+				
+					
+			}
+	
+
+	}
+	
+
 	
 	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
