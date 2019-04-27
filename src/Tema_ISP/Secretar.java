@@ -14,6 +14,11 @@ public class Secretar {
 	 //toate obiectele Materie create
 	 ArrayList <Materie> materii = new ArrayList <Materie>();
 	 
+	//toate obiectele Materie create
+	 ArrayList <Sala> sali = new ArrayList <Sala>();
+		 
+	 
+	 
 	 
 	 
 	 ArrayList <String> materiiPredefinite = new ArrayList <String>();
@@ -123,18 +128,33 @@ public class Secretar {
 			System.out.println("Materia exista deja");
 	}
 	
-	/*public void creareCelulaOrar() {
-		for (String m : materiiPredefinite) {
-			if(!grupa.getListaMaterii().contains(m))
-				continue;
+	//parcurgem lista cu materiile create si pentru fiecare materie de acolo o sa creem o celula de orar
+	/*public void creareCelulaOrar(Materie m) {
+		CelulaOrar celulaNoua = null;
+		for (Sala sala : sali)
+			if(sala.isDisponibilitate()) {
+				celulaNoua.adaugareMaterie(m);
+				celulaNoua.adaugareSala(sala);
+				
+			
+			}
+				
+				
 			
 			
 			
-		}
+		
 		
 	}*/
 	
-	public void creareMaterie(Grupa grupa) {
+	public void creareSala(Materie m) {
+		Sala salaNoua = null;
+		
+		salaNoua.setZi("Luni");
+		
+	}
+	
+	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 		Materie materieNoua = null;
 		
@@ -150,7 +170,7 @@ public class Secretar {
 					}
 				}
 				if(ok) {
-					materieNoua = new Materie(grupa, materiePredefinita, DesfasurareMaterie.curs);
+					materieNoua = new Materie(grupa, materiePredefinita, desf);
 					for (Profesor prof : profi)
 						if(prof.getMaterii().contains(materiePredefinita)) {
 							materieNoua.adaugareProfesor(prof);
@@ -162,6 +182,8 @@ public class Secretar {
 				materii.add(materieNoua);
 		}
 	}
+	
+	
 
 	public void salvareOrar() {
 	}
