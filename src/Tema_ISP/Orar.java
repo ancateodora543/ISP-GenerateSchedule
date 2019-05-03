@@ -12,7 +12,7 @@ public class Orar {
 
 	public void adaugareCelula(CelulaOrar celula) {
 		if(celula.verificareCelulaOrar())
-			this.celuleOrar.add(celula);
+			Orar.celuleOrar.add(celula);
 		else
 			System.out.println("Nu a fost gasita o asemenea celula!");
 
@@ -34,7 +34,7 @@ public class Orar {
 	}
 
 	public void stergereCelula(CelulaOrar celula) {
-		if (this.celuleOrar.contains(celula)) {
+		if (Orar.celuleOrar.contains(celula)) {
 			celuleOrar.remove(celula);
 
 		} else {
@@ -49,7 +49,7 @@ public class Orar {
 		}
 	}
 
-	/*public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
+	public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
 		while (numarareOreZi(zi) < 8) {
 			if (celuleOrar == null) {
 				adaugareCelula(celula);
@@ -65,9 +65,7 @@ public class Orar {
 
 	}
 	
-	public public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi){
-		
-	}*/
+	
 
 	public int numarareOreZi(String zi) {
 		int sum = 0;

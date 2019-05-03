@@ -136,19 +136,23 @@ public class Secretar {
 		else
 			System.out.println("Sala exista deja");
 	}
-	
-	//parcurgem lista cu materiile create si pentru fiecare materie de acolo o sa creem o celula de orar
+
+	// parcurgem lista cu materiile create si pentru fiecare materie de acolo o sa
+	// creem o celula de orar
 	public void creareCelulaOrar(Materie m) {
 		CelulaOrar celulaNoua = null;
 		for (String numeSala : numeSali) {
 			Sala salaNoua = new Sala();
 			salaNoua.adaugareNumeSala(numeSala);
-			for (Sala sala : sali) 
-				if(sala.getNumeSala().equals(numeSala)) {
-					//aici voiam sa vad cand sala asta e ocupata (exista mai multe obiecte de tip Sala pentru acelasi
+			for (Sala sala : sali)
+				if (sala.getNumeSala().equals(numeSala)) {
+					// aici voiam sa vad cand sala asta e ocupata (exista mai multe obiecte de tip
+					// Sala pentru acelasi
 					// nume de sala => dar nu stiu cum sa fac asta
-					
+					System.out.println("Sala este deja folosita!");
+					break;
 				}
+				
 			
 				
 					
