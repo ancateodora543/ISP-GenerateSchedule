@@ -7,34 +7,26 @@ import java.util.Map;
 
 public class Orar {
 
-	private static ArrayList<CelulaOrar> celuleOrar = new ArrayList<CelulaOrar>();
+	private static ArrayList<CelulaOrar> celuleOrar;
 	private Map<String, List<CelulaOrar>> orarZi = new HashMap<String, List<CelulaOrar>>();
 
 	public void adaugareCelula(CelulaOrar celula) {
-		if(celula.verificareCelulaOrar())
-			Orar.celuleOrar.add(celula);
+		if (celula.verificareCelulaOrar())
+			celuleOrar.add(celula);
 		else
 			System.out.println("Nu a fost gasita o asemenea celula!");
-
 	}
 
-	
 	public static ArrayList<CelulaOrar> getCeluleOrar() {
 		return celuleOrar;
 	}
-
-
-	public static void setCeluleOrar(ArrayList<CelulaOrar> celuleOrar) {
-		Orar.celuleOrar = celuleOrar;
-	}
-
 
 	public Map<String, List<CelulaOrar>> getOrarZi() {
 		return orarZi;
 	}
 
 	public void stergereCelula(CelulaOrar celula) {
-		if (Orar.celuleOrar.contains(celula)) {
+		if (celuleOrar.contains(celula)) {
 			celuleOrar.remove(celula);
 
 		} else {
@@ -50,13 +42,18 @@ public class Orar {
 	}
 
 	public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
-		while (numarareOreZi(zi) < 8) {
+		while (numarareOreZi(zi) < 6) {
 			if (celuleOrar == null) {
-				adaugareCelula(celula);
+				celuleOrar = new ArrayList<CelulaOrar>();
+				if (celula.verificareCelulaOrar()) {
+					celuleOrar.add(celula);
+				}
 				orarZi.put(zi, celuleOrar);
 			} else {
-				if (!celuleOrar.contains(celula)) {
-					adaugareCelula(celula);
+				if (celula.verificareCelulaOrar()) {
+					if (!celuleOrar.contains(celula)) {
+						adaugareCelula(celula);
+					}
 				}
 				orarZi.put(zi, celuleOrar);
 			}
@@ -64,8 +61,6 @@ public class Orar {
 		return orarZi;
 
 	}
-	
-	
 
 	public int numarareOreZi(String zi) {
 		int sum = 0;
@@ -74,6 +69,5 @@ public class Orar {
 		}
 		return sum;
 	}
-
 
 }

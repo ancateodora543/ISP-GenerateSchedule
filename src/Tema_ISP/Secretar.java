@@ -1,33 +1,29 @@
 package Tema_ISP;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Secretar {
-	 Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
-	 
-	 
-	 ArrayList <Profesor> profi = new ArrayList <Profesor>();
-	 
-	 //toate obiectele Materie create
-	 ArrayList <Materie> materii = new ArrayList <Materie>();
-	 
-	//toate obiectele Materie create
-	 ArrayList <Sala> sali = new ArrayList <Sala>();
-		 
-	 
-	 
-	 
-	 
-	 ArrayList <String> materiiPredefinite = new ArrayList <String>();
-	 ArrayList <String> numeSali = new ArrayList <String>();
-	 String[] zileSaptamana = {"Luni", "Marti", "Miercuri", "Joi", "Vineri"};
-	 
-	 public void creareOrar(Orar orarFinal, Grupa grupa) {
+	Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
+
+	ArrayList<Profesor> profi = new ArrayList<Profesor>();
+
+	// toate obiectele Materie create
+	ArrayList<Materie> materii = new ArrayList<Materie>();
+
+	// toate obiectele Materie create
+	ArrayList<Sala> sali = new ArrayList<Sala>();
+
+	ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
+	ArrayList<String> numeSali = new ArrayList<String>();
+	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
+
+	public void creareOrar(Orar orarFinal, Grupa grupa) {
 		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
-		
+
 	}
 
 	public void creareContGrupa(Grupa grupa) {
@@ -122,17 +118,17 @@ public class Secretar {
 			System.out.println("Materie adaugata");
 		}
 	}
-	
-	public void adaugareMateriePredefinita(String materie) {
-		if(!materiiPredefinite.contains(materie))
-			materiiPredefinite.add(materie);
+
+	public void adaugareNumeMateriePredefinita(String materie) {
+		if (!numeMateriiPredefinite.contains(materie))
+			numeMateriiPredefinite.add(materie);
 		else
 			System.out.println("Materia exista deja");
 	}
-	
+
 	public void adaugareNumeSala(String sala) {
-		if(!numeSali.contains(sala))
-			materiiPredefinite.add(sala);
+		if (!numeSali.contains(sala))
+			numeMateriiPredefinite.add(sala);
 		else
 			System.out.println("Sala exista deja");
 	}
@@ -144,55 +140,52 @@ public class Secretar {
 		for (String numeSala : numeSali) {
 			Sala salaNoua = new Sala();
 			salaNoua.adaugareNumeSala(numeSala);
-			for (Sala sala : sali)
+			boolean ok = true;
+			for (Sala sala : sali) {
 				if (sala.getNumeSala().equals(numeSala)) {
 					// aici voiam sa vad cand sala asta e ocupata (exista mai multe obiecte de tip
 					// Sala pentru acelasi
 					// nume de sala => dar nu stiu cum sa fac asta
 					System.out.println("Sala este deja folosita!");
+					ok = false;
 					break;
 				}
-				
-			
-				
-					
+
+		}
+			if(ok) {
+				sali.add(salaNoua);
 			}
-	
+		}
 
 	}
-	
 
-	
 	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 		Materie materieNoua = null;
-		
-		for(String materiePredefinita : materiiPredefinite) {
-			if(materiiGrupa.contains(materiePredefinita)) {
-				//verificam daca exista deja o materia cu acest nume pt grupa respectiva
+
+		for (String materiePredefinita : numeMateriiPredefinite) {
+			if (materiiGrupa.contains(materiePredefinita)) {
 				boolean ok = true;
-				for(CelulaOrar celula : Orar.getCeluleOrar()) {
+				for (CelulaOrar celula : Orar.getCeluleOrar()) {
 					Materie m = celula.getMaterie();
-					if( m.getNumeMaterie().equals(materiePredefinita)){
+					if (m.getNumeMaterie().equals(materiePredefinita)) {
 						ok = false;
 						break;
 					}
 				}
-				if(ok) {
+				if (ok) {
 					materieNoua = new Materie(grupa, materiePredefinita, desf);
 					for (Profesor prof : profi)
-						if(prof.getMaterii().contains(materiePredefinita)) {
+						if (prof.getMaterii().contains(materiePredefinita)) {
 							materieNoua.adaugareProfesor(prof);
 							break;
 						}
-				}						
+				}
 			}
-			if(materieNoua != null)
+			if (materieNoua != null)
 				materii.add(materieNoua);
 		}
 	}
-	
-	
 
 	public void salvareOrar() {
 	}
