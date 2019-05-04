@@ -4,7 +4,9 @@
 // --------------------------------------------------------
 
 package Tema_ISP;
+
 import java.util.ArrayList;
+
 import java.util.HashMap;
 
 public class Grupa {
@@ -15,11 +17,19 @@ public class Grupa {
 	private String parola;
 	private boolean logat = false;
 	private ArrayList<String> listaMaterii = new ArrayList<String>();
-	//private ArrayList<Materie> materii = new ArrayList<Materie>();
+	private ArrayList<Materie> materii = new ArrayList<Materie>();
 	private boolean dispobilitate = true;
-	
+
 	public boolean isDispobilitate() {
 		return dispobilitate;
+	}
+
+	public ArrayList<Materie> getMaterii() {
+		return materii;
+	}
+
+	public void setMaterii(ArrayList<Materie> materii) {
+		this.materii = materii;
 	}
 
 	public void setDispobilitate(boolean dispobilitate) {
@@ -66,13 +76,15 @@ public class Grupa {
 	public void vizualizareOrarGrupaStudent(Tema_ISP.Grupa grupa) {
 	}
 
-	/*
-	 * public void adaugareMaterie(Materie materie) { this.materii.add(materie); }
-	 * 
-	 * public void stergereMaterie(Materie materie) { if(materii.contains(materie))
-	 * materii.remove(materie); }
-	 * 
-	 */
+	public void adaugareMaterie(Materie materie) {
+		this.materii.add(materie);
+	}
+
+	public void stergereMaterie(Materie materie) {
+		if (materii.contains(materie))
+			materii.remove(materie);
+	}
+
 	public String getUser() {
 		return user;
 	}

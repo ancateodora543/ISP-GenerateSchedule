@@ -11,7 +11,7 @@ public class Aplicatie {
 	}
 
 	public void setConturi(HashMap<String, String> conturi) {
-		this.conturi = conturi;
+		Aplicatie.conturi = conturi;
 	}
 
 	public static void main(String[] args) {

@@ -10,6 +10,14 @@ public class CelulaOrar {
 		this.materie = materie;
 	}
 
+	
+
+	public CelulaOrar() {
+		super();
+	}
+
+
+
 	public void adaugareMaterie(Materie materie) {
 		this.materie = materie;
 	}

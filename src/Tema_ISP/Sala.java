@@ -6,7 +6,7 @@ public class Sala {
 	private String oraInceput;
 	private String oraSfarsit;
 	private String numeSala;
-	private boolean disponibilitate;
+	private boolean disponibilitate = true;
 
 	public void eliberareDisponibilitate() {
 		if (this.disponibilitate)
