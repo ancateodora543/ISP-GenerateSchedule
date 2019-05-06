@@ -42,11 +42,14 @@ public class Secretar {
 	public void stergereContGrupa(Grupa grupa) {
 
 		String user = grupa.getUser();
+		String pass = grupa.getParola();
 		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
 			Aplicatie.getConturi().remove(user);
 			System.out.println("Contul a fost sters");
+			user = null;
+			pass = null;
 		}
 	}
 
@@ -96,11 +99,15 @@ public class Secretar {
 
 	public void stergereContProfesor(Profesor profesor) {
 		String user = profesor.getUser();
+		String pass =  profesor.getParola();
 		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
 			Aplicatie.getConturi().remove(user);
 			System.out.println("Contul a fost sters");
+			user = null;
+			pass = null;
+					
 		}
 	}
 
