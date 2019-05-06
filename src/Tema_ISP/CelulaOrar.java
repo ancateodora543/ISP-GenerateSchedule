@@ -48,6 +48,9 @@ public class CelulaOrar {
 	public void afisare() {
 		System.out.println("Materie: " + materie.getNumeMaterie().toUpperCase());
 		System.out.println("Sala: " + sala.getNumeSala().toUpperCase());
+		System.out.println("Profesor: " + materie.getProfesor().getNume());
+		System.out.println("Zi: " + sala.getZi());
+		System.out.println("Ora: " + sala.getOraInceput() + "--" + sala.getOraSfarsit());
 	}
 
 	public boolean verificareCelulaOrar() {

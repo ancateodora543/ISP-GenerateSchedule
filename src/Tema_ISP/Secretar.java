@@ -1,5 +1,9 @@
 package Tema_ISP;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -297,7 +301,7 @@ public class Secretar {
 		for (String materiePredefinita : numeMateriiPredefinite) {
 			if (materiiGrupa.contains(materiePredefinita)) {
 				boolean ok = true;
-				for (CelulaOrar celula : Orar.getCeluleOrar()) {
+				for (CelulaOrar celula : celuleOrar) {
 					Materie m = celula.getMaterie();
 					if (m.getNumeMaterie().equals(materiePredefinita)) {
 						ok = false;
@@ -318,9 +322,36 @@ public class Secretar {
 		}
 	}
 
-	public void salvareOrar() {
+	public void salvareOrar(String fisier) {
+		for (CelulaOrar celula : celuleOrar) {
+			File logFile = new File(fisier);
+			PrintWriter filePrint;
+			try {
+				logFile.createNewFile();
+			} catch (IOException e1) { // TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			FileWriter testWriter;
+			try {
+				testWriter = new FileWriter(logFile);
+				filePrint = new PrintWriter(testWriter, true);
+				filePrint.println("Materie: " + celula.getMaterie().getNumeMaterie().toUpperCase());
+				filePrint.println("Sala: " + celula.getSala().getNumeSala().toUpperCase());
+				filePrint.println("Profesor: " + celula.getMaterie().getProfesor().getNume());
+				filePrint.println("Zi: " + celula.getSala().getZi());
+				filePrint.println("Ora: " + celula.getSala().getOraInceput() + "--" + celula.getSala().getOraSfarsit());
+			} catch (IOException e) { // TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 	}
 
 	public void afisareOrar() {
+		for (CelulaOrar celula : celuleOrar) {
+			celula.afisare();
+			System.out.println();
+		}
 	}
+
 };

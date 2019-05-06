@@ -47,8 +47,9 @@ public class Aplicatie {
 		secretar1.adaugareNumeMateriePredefinita("POO");
 		secretar1.adaugareNumeMateriePredefinita("SDA");
 		secretar1.adaugareNumeMateriePredefinita("IRA");
-		secretar1.adaugareNumeMateriePredefinita("POO");
-		secretar1.adaugareNumeMateriePredefinita("SDA");
+		
+		
+		secretar1.creareMaterie(grupa1, DesfasurareMaterie.curs);
 		
 	}
 
