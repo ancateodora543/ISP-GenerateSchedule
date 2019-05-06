@@ -13,6 +13,23 @@ public class Sala {
 			this.disponibilitate = false;
 
 	}
+	
+	
+
+	public Sala() {
+		super();
+	}
+
+
+
+	public Sala(String zi, String oraInceput, String numeSala) {
+		super();
+		this.zi = zi;
+		this.oraInceput = oraInceput;
+		this.numeSala = numeSala;
+	}
+
+
 
 	public String getZi() {
 		return zi;

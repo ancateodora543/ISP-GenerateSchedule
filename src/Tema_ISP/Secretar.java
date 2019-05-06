@@ -11,12 +11,12 @@ public class Secretar {
 
 	ArrayList<Profesor> profi = new ArrayList<Profesor>();
 
-	// toate obiectele Materie create
+	
 	ArrayList<Materie> materii = new ArrayList<Materie>();
 
-	// toate obiectele Materie create
+	
 	ArrayList<Sala> sali = new ArrayList<Sala>();
-	ArrayList<CelulaOrar> celuleOrar = new ArrayList<CelulaOrar>();
+	ArrayList<CelulaOrar> celuleOrar;
 
 	ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
@@ -151,6 +151,10 @@ public class Secretar {
 					ok = false;
 					break;
 				}
+				else
+				{
+					
+				}
 
 			}
 			if (ok) {
@@ -160,34 +164,38 @@ public class Secretar {
 
 	}
 
-	public void creareCelulaOrar(Grupa grupa, Profesor profesor) {
-		ArrayList<Materie> materiiGrupa = grupa.getMaterii();
-
-		for (Materie materie : materiiGrupa) {
-			if (materie.getGrupa() == grupa && materie.getProfesor() == profesor && profesor.isDisponibilitate()) {
-				for (Sala sala : sali) {
-					if (sala.isDisponibilitate()) {
-						CelulaOrar celula = new CelulaOrar(sala, materie);
-						sala.setareDisponibilitate(false);
-						profesor.setDisponibilitate(false);
-						if (celuleOrar == null) {
-							celuleOrar = new ArrayList<CelulaOrar>();
-							celuleOrar.add(celula);
-						} else {
-							if (!celuleOrar.contains(celula)) {
-								celuleOrar.add(celula);
-							}
-						}
-					}
+	public void creareCelulaOrar(Sala sala) {
+		int ora = 0;
+		for (Materie m : materii) {
+			CelulaOrar celula = new CelulaOrar(m);
+			if (celuleOrar == null) {
+				celuleOrar = new ArrayList<CelulaOrar>();
+				celuleOrar.add(celula);
+			} else {
+				if (!celuleOrar.contains(celula)) {
+					celuleOrar.add(celula);
 				}
 			}
-		}
-	}
+			for (CelulaOrar c : celuleOrar) {
+				if(c.equals(celuleOrar.get(0))) {
+					Sala s = new Sala("Luni", "8", "EC105");
+					ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
+					s.setOraSfarsit(Integer.toString(ora));
+				}
+				else
+				{
+					
+				}
 
+			}
+
+		}
+
+	}
 	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 		Materie materieNoua = null;
-
+		
 		for (String materiePredefinita : numeMateriiPredefinite) {
 			if (materiiGrupa.contains(materiePredefinita)) {
 				boolean ok = true;

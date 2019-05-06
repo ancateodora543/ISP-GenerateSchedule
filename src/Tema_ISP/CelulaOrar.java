@@ -9,7 +9,10 @@ public class CelulaOrar {
 		this.sala = sala;
 		this.materie = materie;
 	}
-
+	
+	public CelulaOrar(Materie materie) {
+		this.materie = materie;
+	}
 	
 
 	public CelulaOrar() {
