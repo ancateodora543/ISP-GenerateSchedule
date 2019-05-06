@@ -23,22 +23,18 @@ public class Profesor {
 	InputStreamReader isr = new InputStreamReader(System.in);
 	BufferedReader br = new BufferedReader(isr);
 
-	
 	public Profesor(String nume) {
 		super();
 		this.nume = nume;
 	}
 
-
 	public void afisareProfesor() {
 		System.out.println("Profesor: " + this.nume);
 	}
 
-	
 	public ArrayList<String> getMaterii() {
 		return materii;
 	}
-
 
 	public void logareProfesor() {
 		HashMap<String, String> hm = Aplicatie.getConturi();
@@ -70,13 +66,35 @@ public class Profesor {
 			System.out.println("Username invalid");
 	}
 
-	public void vizualizareOrarMaterieProfesor(String materie) {
+	public ArrayList<CelulaOrar> vizualizareOrarMaterieProfesor(String materie) {
+		ArrayList<CelulaOrar> orarMaterie = new ArrayList<CelulaOrar>();
+		if (materii.contains(materie)) {
+			for (CelulaOrar celula : Secretar.celuleOrar)
+				if (celula.getMaterie().getNumeMaterie().equals(materie) && celula.getMaterie().getProfesor() == this)
+					orarMaterie.add(celula);
+		} else
+			System.out.println("Profesorul nu preda aceasta materie");
+		return orarMaterie;
 	}
 
-	public void vizualizareOrarZi(String zi) {
+	public ArrayList<CelulaOrar> vizualizareOrarZi(String zi) {
+		ArrayList<CelulaOrar> orarZiProfesor = new ArrayList<CelulaOrar>();
+		if(zi.equals("Luni")||zi.equals("Marti")||zi.equals("Miercuri")||zi.equals("Joi")||zi.equals("Vineri")) {
+			for (CelulaOrar celula : Secretar.celuleOrar)
+				if (celula.getSala().getZi().equals(zi) && celula.getMaterie().getProfesor() == this)
+					orarZiProfesor.add(celula);
+		} else
+			System.out.println("Zi invalida");
+		return orarZiProfesor;
 	}
 
-	public void vizualizareOrarProfesor() {
+	public ArrayList<CelulaOrar> vizualizareOrarProfesor() {
+		ArrayList<CelulaOrar> orarProfesor = new ArrayList<CelulaOrar>();
+		for(CelulaOrar celula : Secretar.celuleOrar)
+			if(celula.getMaterie().getProfesor() == this)
+				orarProfesor.add(celula);
+		
+		return orarProfesor;
 	}
 
 	public void adaugareMaterie(String materie) {
@@ -119,5 +137,5 @@ public class Profesor {
 	public void setDisponibilitate(boolean disponibilitate) {
 		this.disponibilitate = disponibilitate;
 	}
-	
+
 };

@@ -2,11 +2,12 @@ package Tema_ISP;
 
 public class Materie {
 
-	private int durata;
+	private int durata = 2;
 	private String numeMaterie;
 	private DesfasurareMaterie modDesfasurareMaterie;
 	private Grupa grupa;
 	private Profesor profesor;
+	
 	
 	public Materie(Grupa grupa, String nume, DesfasurareMaterie desf, Profesor prof) {
 		this(grupa,nume,desf);
@@ -17,10 +18,6 @@ public class Materie {
 		this.grupa = grupa;
 		this.numeMaterie = nume;
 		this.modDesfasurareMaterie = desf;
-		if(desf == DesfasurareMaterie.curs)
-			this.durata = 3;
-		else 
-			this.durata = 2;	
 	}
 
 	public int getDurata() {
@@ -66,6 +63,20 @@ public class Materie {
 	public Grupa getGrupa() {
 		return grupa;
 	}
+
+	public DesfasurareMaterie getModDesfasurareMaterie() {
+		return modDesfasurareMaterie;
+	}
+
+	public void setModDesfasurareMaterie(DesfasurareMaterie modDesfasurareMaterie) {
+		this.modDesfasurareMaterie = modDesfasurareMaterie;
+	}
+
+	public void setDurata(int durata) {
+		this.durata = durata;
+	}
+	
+	
 
 	
 };

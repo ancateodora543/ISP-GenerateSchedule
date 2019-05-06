@@ -14,7 +14,7 @@ public class Secretar {
 	ArrayList<Materie> materii = new ArrayList<Materie>();
 
 	ArrayList<Sala> sali = new ArrayList<Sala>();
-	ArrayList<CelulaOrar> celuleOrar;
+	public static ArrayList<CelulaOrar> celuleOrar;
 
 	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
@@ -37,11 +37,14 @@ public class Secretar {
 	public void stergereContGrupa(Grupa grupa) {
 
 		String user = grupa.getUser();
+		String pass = grupa.getParola();
 		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
 			Aplicatie.getConturi().remove(user);
 			System.out.println("Contul a fost sters");
+			user = null;
+			pass = null;
 		}
 	}
 
@@ -91,11 +94,15 @@ public class Secretar {
 
 	public void stergereContProfesor(Profesor profesor) {
 		String user = profesor.getUser();
+		String pass =  profesor.getParola();
 		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
 			Aplicatie.getConturi().remove(user);
 			System.out.println("Contul a fost sters");
+			user = null;
+			pass = null;
+					
 		}
 	}
 
@@ -212,67 +219,72 @@ public class Secretar {
 					celuleOrar.add(celula);
 				}
 			}
+			// sali
+
+			int oreLuni = 0;
+			int oreMarti = 0;
+			int oreMiercuri = 0;
+			int oreJoi = 0;
+			int oreVineri = 0;
+
+			int indexLuni = 8;
+			int indexMarti = 10;
+			int indexMiercuri = 10;
+			int indexJoi = 12;
+			int indexVineri = 10;
+
 			for (CelulaOrar c : celuleOrar) {
-				int indexLuni = 8;
 				if (c.equals(celuleOrar.get(0))) {
 					Sala s = new Sala("Luni", Integer.toString(indexLuni), "EC105");
 					ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
 					indexLuni = ora;
+					oreLuni = oreLuni + m.getDurata();
 					s.setOraSfarsit(Integer.toString(ora));
+					c.setSala(s);
 				} else {
-					for (CelulaOrar cel : celuleOrar) {
-						int oreLuni = 0;
-						if (cel.getSala().getZi().equals("Luni"))
-							oreLuni = oreLuni + cel.getMaterie().getDurata();
-						if (oreLuni < 6) {
-							Sala s = new Sala("Luni", Integer.toString(indexLuni), "EC105");
+					if (oreLuni < 6) {
+						Sala s = new Sala("Luni", Integer.toString(indexLuni), "EC105");
+						ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
+						indexLuni = ora;
+						oreLuni = oreLuni + m.getDurata();
+						s.setOraSfarsit(Integer.toString(ora));
+						c.setSala(s);
+					} else {
+						if (oreMarti < 6) {
+							Sala s = new Sala("Marti", Integer.toString(indexMarti), "EC105");
 							ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
-							indexLuni = ora;
+							indexMarti = ora;
+							oreMarti = oreMarti + m.getDurata();
 							s.setOraSfarsit(Integer.toString(ora));
+							c.setSala(s);
 						} else {
-							int oreMarti = 0;
-							int indexMarti = 10;
-							if (cel.getSala().getZi().equals("Marti"))
-								oreMarti = oreMarti + cel.getMaterie().getDurata();
-							if (oreMarti < 6) {
-								Sala s = new Sala("Marti", Integer.toString(indexMarti), "EC105");
+							if (oreMiercuri < 6) {
+								Sala s = new Sala("Miercuri", Integer.toString(indexMiercuri), "EC105");
 								ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
-								indexMarti = ora;
+								indexMiercuri = ora;
+								oreMiercuri = oreMiercuri + m.getDurata();
 								s.setOraSfarsit(Integer.toString(ora));
+								c.setSala(s);
 							} else {
-								int oreMiercuri = 0;
-								int indexMiercuri = 10;
-								if (cel.getSala().getZi().equals("Miercuri"))
-									oreMiercuri = oreMiercuri + cel.getMaterie().getDurata();
-								if (oreMiercuri < 6) {
-									Sala s = new Sala("Miercuri", Integer.toString(indexMiercuri), "EC105");
+								if (oreJoi < 6) {
+									Sala s = new Sala("Joi", Integer.toString(indexJoi), "EC105");
 									ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
-									indexMiercuri = ora;
+									indexJoi = ora;
+									oreJoi = oreJoi + m.getDurata();
 									s.setOraSfarsit(Integer.toString(ora));
+									c.setSala(s);
 								} else {
-									int oreJoi = 0;
-									int indexJoi = 12;
-									if (cel.getSala().getZi().equals("Joi"))
-										oreJoi = oreJoi + cel.getMaterie().getDurata();
-									if (oreJoi < 6) {
-										Sala s = new Sala("Joi", Integer.toString(indexJoi), "EC105");
+									if (oreVineri < 6) {
+										Sala s = new Sala("Vineri", Integer.toString(indexVineri), "EC105");
 										ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
-										indexJoi = ora;
+										indexVineri = ora;
+										oreVineri = oreVineri + m.getDurata();
 										s.setOraSfarsit(Integer.toString(ora));
-									} else {
-										int oreVineri = 0;
-										int indexVineri = 10;
-										if (cel.getSala().getZi().equals("Vineri"))
-											oreVineri = oreVineri + cel.getMaterie().getDurata();
-										if (oreVineri < 6) {
-											Sala s = new Sala("Vineri", Integer.toString(indexVineri), "EC105");
-											ora = Integer.parseInt(s.getOraInceput()) + m.getDurata();
-											indexVineri = ora;
-											s.setOraSfarsit(Integer.toString(ora));
-										}
+										c.setSala(s);
 									}
 								}
 							}
+
 						}
 
 					}
@@ -291,11 +303,13 @@ public class Secretar {
 		for (String materiePredefinita : numeMateriiPredefinite) {
 			if (materiiGrupa.contains(materiePredefinita)) {
 				boolean ok = true;
-				for (CelulaOrar celula : celuleOrar) {
-					Materie m = celula.getMaterie();
-					if (m.getNumeMaterie().equals(materiePredefinita)) {
-						ok = false;
-						break;
+				if (celuleOrar != null) {
+					for (CelulaOrar celula : celuleOrar) {
+						Materie m = celula.getMaterie();
+						if (m.getNumeMaterie().equals(materiePredefinita) && m.getModDesfasurareMaterie() == desf) {
+							ok = false;
+							break;
+						}
 					}
 				}
 				if (ok) {
@@ -306,33 +320,32 @@ public class Secretar {
 							break;
 						}
 				}
+				if (materieNoua != null)
+					materii.add(materieNoua);
 			}
-			if (materieNoua != null)
-				materii.add(materieNoua);
+
 		}
 	}
 
-	public void salvareOrar(String fisier) {
+	public void salvareOrar(String fisier) throws IOException {
+		File logFile = new File(fisier);
+		PrintWriter filePrint;
+		FileWriter testWriter;
+		testWriter = new FileWriter(logFile);
+		filePrint = new PrintWriter(testWriter, true);
 		for (CelulaOrar celula : celuleOrar) {
-			File logFile = new File(fisier);
-			PrintWriter filePrint;
 			try {
 				logFile.createNewFile();
 			} catch (IOException e1) { // TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			FileWriter testWriter;
-			try {
-				testWriter = new FileWriter(logFile);
-				filePrint = new PrintWriter(testWriter, true);
-				filePrint.println("Materie: " + celula.getMaterie().getNumeMaterie().toUpperCase());
-				filePrint.println("Sala: " + celula.getSala().getNumeSala().toUpperCase());
-				filePrint.println("Profesor: " + celula.getMaterie().getProfesor().getNume());
-				filePrint.println("Zi: " + celula.getSala().getZi());
-				filePrint.println("Ora: " + celula.getSala().getOraInceput() + "--" + celula.getSala().getOraSfarsit());
-			} catch (IOException e) { // TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			filePrint.println("Materie: " + celula.getMaterie().getNumeMaterie().toUpperCase());
+			filePrint.println("Sala: " + celula.getSala().getNumeSala().toUpperCase());
+			filePrint.println("Profesor: " + celula.getMaterie().getProfesor().getNume());
+			filePrint.println("Zi: " + celula.getSala().getZi());
+			filePrint.println("Ora: " + celula.getSala().getOraInceput() + "--" + celula.getSala().getOraSfarsit());
+			filePrint.println("Tip desfasurare: " + celula.getMaterie().getModDesfasurareMaterie() );
+			filePrint.println();
 
 		}
 	}
@@ -342,6 +355,26 @@ public class Secretar {
 			celula.afisare();
 			System.out.println();
 		}
+	}
+
+	public ArrayList<Materie> getMaterii() {
+		return materii;
+	}
+
+	public void setMaterii(ArrayList<Materie> materii) {
+		this.materii = materii;
+	}
+
+	public ArrayList<CelulaOrar> getCeluleOrar() {
+		return celuleOrar;
+	}
+
+	public void setCeluleOrar(ArrayList<CelulaOrar> celuleOrar) {
+		this.celuleOrar = celuleOrar;
+	}
+	
+	public void adaugareProfesori(Profesor p) {
+		profi.add(p);
 	}
 
 };

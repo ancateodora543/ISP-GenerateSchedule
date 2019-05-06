@@ -17,28 +17,17 @@ public class Grupa {
 	private String parola;
 	private boolean logat = false;
 	private ArrayList<String> listaMaterii = new ArrayList<String>();
-	//private ArrayList<Materie> materii = new ArrayList<Materie>();
 	private boolean dispobilitate = true;
 
 	public boolean isDispobilitate() {
 		return dispobilitate;
 	}
 
-	
-
 	public Grupa(String nume, String serie) {
 		super();
 		this.nume = nume;
 		this.serie = serie;
 	}
-
-
-
-	public Grupa() {
-		super();// TODO Auto-generated constructor stub
-	}
-
-
 
 	public void setDispobilitate(boolean dispobilitate) {
 		this.dispobilitate = dispobilitate;
@@ -75,14 +64,25 @@ public class Grupa {
 			System.out.println("Nu sunteti inca logat");
 	}
 
-	public void vizualizareOrarZilnic(String zi) {
+	public ArrayList<CelulaOrar> vizualizareOrarZilnic(String zi) {
+		ArrayList<CelulaOrar> orarZiGrupa = new ArrayList<CelulaOrar>();
+		if(zi.equals("Luni")||zi.equals("Marti")||zi.equals("Miercuri")||zi.equals("Joi")||zi.equals("Vineri")) {
+			for (CelulaOrar celula : Secretar.celuleOrar)
+				if (celula.getSala().getZi().equals(zi) && celula.getMaterie().getGrupa() == this)
+					orarZiGrupa.add(celula);
+		} else
+			System.out.println("Zi invalida");
+		return orarZiGrupa;
 	}
 
-	public void vizualizareOrarSaptamana() {
+	public ArrayList<CelulaOrar> vizualizareOrarSaptamana() {
+		ArrayList<CelulaOrar> orarGrupa = new ArrayList<CelulaOrar>();
+		for(CelulaOrar celula : Secretar.celuleOrar)
+			if(celula.getMaterie().getGrupa() ==  this)
+				orarGrupa.add(celula);
+		return orarGrupa;
 	}
 
-	public void vizualizareOrarGrupaStudent(Tema_ISP.Grupa grupa) {
-	}
 
 	public void adaugareMaterie(String materie) {
 		this.listaMaterii.add(materie);

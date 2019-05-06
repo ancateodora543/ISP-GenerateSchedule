@@ -51,6 +51,7 @@ public class CelulaOrar {
 		System.out.println("Profesor: " + materie.getProfesor().getNume());
 		System.out.println("Zi: " + sala.getZi());
 		System.out.println("Ora: " + sala.getOraInceput() + "--" + sala.getOraSfarsit());
+		System.out.println("Desfasurare: " + materie.getModDesfasurareMaterie());
 	}
 
 	public boolean verificareCelulaOrar() {
