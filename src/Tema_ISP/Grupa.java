@@ -34,6 +34,12 @@ public class Grupa {
 
 
 
+	public Grupa() {
+		super();// TODO Auto-generated constructor stub
+	}
+
+
+
 	public void setDispobilitate(boolean dispobilitate) {
 		this.dispobilitate = dispobilitate;
 	}

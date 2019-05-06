@@ -6,13 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Secretar {
-	Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
-
 	ArrayList<Profesor> profi = new ArrayList<Profesor>();
 	String[] serii = { "AA", "AB", "AC", "CA", "CB", "CC", "CD" };
 
@@ -24,11 +19,6 @@ public class Secretar {
 	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
-
-	public void creareOrar(Orar orarFinal, Grupa grupa) {
-		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
-
-	}
 
 	public void creareContGrupa(Grupa grupa) {
 
@@ -210,7 +200,7 @@ public class Secretar {
 
 	}
 
-	public void creareCelulaOrar(Sala sala) {
+	public void creareCelulaOrar() {
 		int ora = 0;
 		for (Materie m : materii) {
 			CelulaOrar celula = new CelulaOrar(m);
