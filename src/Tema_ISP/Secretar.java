@@ -10,6 +10,7 @@ public class Secretar {
 	Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
 
 	ArrayList<Profesor> profi = new ArrayList<Profesor>();
+	String[] serii = {"AA", "AB", "AC", "CA", "CB", "CC", "CD"};
 
 	
 	ArrayList<Materie> materii = new ArrayList<Materie>();
@@ -18,9 +19,11 @@ public class Secretar {
 	ArrayList<Sala> sali = new ArrayList<Sala>();
 	ArrayList<CelulaOrar> celuleOrar;
 
-	ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
+	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
+	
+	
 
 	public void creareOrar(Orar orarFinal, Grupa grupa) {
 		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
@@ -55,14 +58,27 @@ public class Secretar {
 	public void modificareContStudent(Grupa grupa, String criteriu, String valoareNoua) {
 		switch (criteriu) {
 		case "nume": {
-			grupa.setNume(valoareNoua);
-			System.out.println("Nume modificat");
-			break;
+			if(validareGrupa(criteriu,valoareNoua)) {
+				grupa.setNume(valoareNoua);
+				System.out.println("Nume modificat");
+				break;
+			}
+			else {
+				System.out.println("Nume invalid");
+				break;
+			}
+				
 		}
 		case "serie": {
-			grupa.setSerie(valoareNoua);
-			System.out.println("Serie modificata");
-			break;
+			if(validareGrupa(criteriu,valoareNoua)) {
+				grupa.setSerie(valoareNoua);
+				System.out.println("Serie modificata");
+				break;
+			}
+			else {
+				System.out.println("Serie invalida");
+				break;
+			}
 		}
 		default: {
 			System.out.println("Camp inexistent");
@@ -98,9 +114,15 @@ public class Secretar {
 	public void modificareContProfesor(Profesor profesor, String criteriu, String valoareNoua) {
 		switch (criteriu) {
 		case "nume": {
-			profesor.setNume(valoareNoua);
-			System.out.println("Nume modificat");
-			break;
+			if(validareProf(criteriu,valoareNoua)) {
+				profesor.setNume(valoareNoua);
+				System.out.println("Nume modificat");
+				break;
+			}
+			else {
+				System.out.println("Nume invalid");
+				break;	
+			}
 		}
 		default: {
 			System.out.println("Camp inexistent");
@@ -108,7 +130,36 @@ public class Secretar {
 		}
 		}
 	}
+	
+	public boolean validareGrupa(String camp, String valoare) {
+		boolean rezultat = true;
+		boolean ok = false;
+		
+		if(camp.equals("nume"))
+			if(valoare.contains("[a-zA-Z]"))
+				rezultat = false;
+		
+		if(camp.equals("serie")) {
+			for(String serie : serii)
+				if(valoare.equals(serie))
+					ok = true;
+		}
+		if(ok == false)
+			rezultat = false;
+				
+		return rezultat;
+	}
 
+	public boolean validareProf(String camp, String valoare) {
+		boolean rezultat = true;
+		
+		if(camp.equals("nume"))
+			if(!valoare.contains("[a-zA-Z]"))
+				rezultat = false;
+		
+		return rezultat;
+	}
+	
 	public void adaugareMaterieGrupa(Grupa grupa, String materie) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 
@@ -164,6 +215,7 @@ public class Secretar {
 
 	}
 
+<<<<<<< HEAD
 	public void creareCelulaOrar(Sala sala) {
 		int ora = 0;
 		for (Materie m : materii) {
@@ -192,6 +244,8 @@ public class Secretar {
 		}
 
 	}
+=======
+>>>>>>> 08c4c042ee8a28de4c3205a597f705f0bccdc4d0
 	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 		Materie materieNoua = null;
