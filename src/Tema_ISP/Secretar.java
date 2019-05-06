@@ -10,6 +10,7 @@ public class Secretar {
 	Map<String, Map<String, List<CelulaOrar>>> orarGrupa = new HashMap<String, Map<String, List<CelulaOrar>>>();
 
 	ArrayList<Profesor> profi = new ArrayList<Profesor>();
+	String[] serii = {"AA", "AB", "AC", "CA", "CB", "CC", "CD"};
 
 	// toate obiectele Materie create
 	ArrayList<Materie> materii = new ArrayList<Materie>();
@@ -18,7 +19,7 @@ public class Secretar {
 	ArrayList<Sala> sali = new ArrayList<Sala>();
 	ArrayList<CelulaOrar> celuleOrar = new ArrayList<CelulaOrar>();
 
-	ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
+	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
 
@@ -55,14 +56,27 @@ public class Secretar {
 	public void modificareContStudent(Grupa grupa, String criteriu, String valoareNoua) {
 		switch (criteriu) {
 		case "nume": {
-			grupa.setNume(valoareNoua);
-			System.out.println("Nume modificat");
-			break;
+			if(validareGrupa(criteriu,valoareNoua)) {
+				grupa.setNume(valoareNoua);
+				System.out.println("Nume modificat");
+				break;
+			}
+			else {
+				System.out.println("Nume invalid");
+				break;
+			}
+				
 		}
 		case "serie": {
-			grupa.setSerie(valoareNoua);
-			System.out.println("Serie modificata");
-			break;
+			if(validareGrupa(criteriu,valoareNoua)) {
+				grupa.setSerie(valoareNoua);
+				System.out.println("Serie modificata");
+				break;
+			}
+			else {
+				System.out.println("Serie invalida");
+				break;
+			}
 		}
 		default: {
 			System.out.println("Camp inexistent");
@@ -98,9 +112,15 @@ public class Secretar {
 	public void modificareContProfesor(Profesor profesor, String criteriu, String valoareNoua) {
 		switch (criteriu) {
 		case "nume": {
-			profesor.setNume(valoareNoua);
-			System.out.println("Nume modificat");
-			break;
+			if(validareProf(criteriu,valoareNoua)) {
+				profesor.setNume(valoareNoua);
+				System.out.println("Nume modificat");
+				break;
+			}
+			else {
+				System.out.println("Nume invalid");
+				break;	
+			}
 		}
 		default: {
 			System.out.println("Camp inexistent");
@@ -108,7 +128,36 @@ public class Secretar {
 		}
 		}
 	}
+	
+	public boolean validareGrupa(String camp, String valoare) {
+		boolean rezultat = true;
+		boolean ok = false;
+		
+		if(camp.equals("nume"))
+			if(valoare.contains("[a-zA-Z]"))
+				rezultat = false;
+		
+		if(camp.equals("serie")) {
+			for(String serie : serii)
+				if(valoare.equals(serie))
+					ok = true;
+		}
+		if(ok == false)
+			rezultat = false;
+				
+		return rezultat;
+	}
 
+	public boolean validareProf(String camp, String valoare) {
+		boolean rezultat = true;
+		
+		if(camp.equals("nume"))
+			if(!valoare.contains("[a-zA-Z]"))
+				rezultat = false;
+		
+		return rezultat;
+	}
+	
 	public void adaugareMaterieGrupa(Grupa grupa, String materie) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 
@@ -160,30 +209,6 @@ public class Secretar {
 
 	}
 
-	public void creareCelulaOrar(Grupa grupa, Profesor profesor) {
-		ArrayList<Materie> materiiGrupa = grupa.getMaterii();
-
-		for (Materie materie : materiiGrupa) {
-			if (materie.getGrupa() == grupa && materie.getProfesor() == profesor && profesor.isDisponibilitate()) {
-				for (Sala sala : sali) {
-					if (sala.isDisponibilitate()) {
-						CelulaOrar celula = new CelulaOrar(sala, materie);
-						sala.setareDisponibilitate(false);
-						profesor.setDisponibilitate(false);
-						if (celuleOrar == null) {
-							celuleOrar = new ArrayList<CelulaOrar>();
-							celuleOrar.add(celula);
-						} else {
-							if (!celuleOrar.contains(celula)) {
-								celuleOrar.add(celula);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 		Materie materieNoua = null;
@@ -210,6 +235,18 @@ public class Secretar {
 			if (materieNoua != null)
 				materii.add(materieNoua);
 		}
+	}
+	
+	public void setareMateriiPredefinite() {
+		this.adaugareNumeMateriePredefinita("Matematica");
+		this.adaugareNumeMateriePredefinita("Fizica");
+		this.adaugareNumeMateriePredefinita("Chimie");
+		this.adaugareNumeMateriePredefinita("Baze de date");
+		this.adaugareNumeMateriePredefinita("POO");
+		this.adaugareNumeMateriePredefinita("SDA");
+		this.adaugareNumeMateriePredefinita("IRA");
+		this.adaugareNumeMateriePredefinita("POO");
+		this.adaugareNumeMateriePredefinita("SDA");
 	}
 
 	public void salvareOrar() {
