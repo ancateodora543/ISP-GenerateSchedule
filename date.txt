@@ -1,0 +1,105 @@
+Materie: FIZICA
+Sala: EC105
+Profesor: Caramihai Simona
+Zi: Luni
+Ora: 8--10
+Tip desfasurare: curs
+
+Materie: BAZE DE DATE
+Sala: EC105
+Profesor: Veizu Ileana
+Zi: Luni
+Ora: 10--12
+Tip desfasurare: curs
+
+Materie: POO
+Sala: EC105
+Profesor: Caramihai Mihai
+Zi: Luni
+Ora: 12--14
+Tip desfasurare: curs
+
+Materie: SDA
+Sala: EC105
+Profesor: Caramihai Mihai
+Zi: Marti
+Ora: 10--12
+Tip desfasurare: curs
+
+Materie: IRA
+Sala: EC105
+Profesor: Caramihai Simona
+Zi: Marti
+Ora: 12--14
+Tip desfasurare: curs
+
+Materie: FIZICA
+Sala: EC105
+Profesor: Caramihai Simona
+Zi: Marti
+Ora: 14--16
+Tip desfasurare: curs
+
+Materie: BAZE DE DATE
+Sala: EC105
+Profesor: Veizu Ileana
+Zi: Miercuri
+Ora: 10--12
+Tip desfasurare: curs
+
+Materie: POO
+Sala: EC105
+Profesor: Caramihai Mihai
+Zi: Miercuri
+Ora: 12--14
+Tip desfasurare: curs
+
+Materie: SDA
+Sala: EC105
+Profesor: Caramihai Mihai
+Zi: Miercuri
+Ora: 14--16
+Tip desfasurare: curs
+
+Materie: IRA
+Sala: EC105
+Profesor: Caramihai Simona
+Zi: Joi
+Ora: 12--14
+Tip desfasurare: curs
+
+Materie: FIZICA
+Sala: EC105
+Profesor: Caramihai Simona
+Zi: Joi
+Ora: 14--16
+Tip desfasurare: laborator
+
+Materie: BAZE DE DATE
+Sala: EC105
+Profesor: Veizu Ileana
+Zi: Joi
+Ora: 16--18
+Tip desfasurare: laborator
+
+Materie: POO
+Sala: EC105
+Profesor: Caramihai Mihai
+Zi: Vineri
+Ora: 10--12
+Tip desfasurare: laborator
+
+Materie: SDA
+Sala: EC105
+Profesor: Caramihai Mihai
+Zi: Vineri
+Ora: 12--14
+Tip desfasurare: laborator
+
+Materie: IRA
+Sala: EC105
+Profesor: Caramihai Simona
+Zi: Vineri
+Ora: 14--16
+Tip desfasurare: laborator
+
