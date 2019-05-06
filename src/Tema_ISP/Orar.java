@@ -41,33 +41,5 @@ public class Orar {
 		}
 	}
 
-	public Map<String, List<CelulaOrar>> creareOrarZi(CelulaOrar celula, String zi) {
-		while (numarareOreZi(zi) < 6) {
-			if (celuleOrar == null) {
-				celuleOrar = new ArrayList<CelulaOrar>();
-				if (celula.verificareCelulaOrar()) {
-					celuleOrar.add(celula);
-				}
-				orarZi.put(zi, celuleOrar);
-			} else {
-				if (celula.verificareCelulaOrar()) {
-					if (!celuleOrar.contains(celula)) {
-						adaugareCelula(celula);
-					}
-				}
-				orarZi.put(zi, celuleOrar);
-			}
-		}
-		return orarZi;
-
-	}
-
-	public int numarareOreZi(String zi) {
-		int sum = 0;
-		for (CelulaOrar o : orarZi.get(zi)) {
-			sum = sum + o.getMaterie().getDurata();
-		}
-		return sum;
-	}
 
 }
