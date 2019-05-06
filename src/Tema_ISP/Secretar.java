@@ -19,16 +19,11 @@ public class Secretar {
 	ArrayList<Materie> materii = new ArrayList<Materie>();
 
 	ArrayList<Sala> sali = new ArrayList<Sala>();
-	ArrayList<CelulaOrar> celuleOrar;
+	public static ArrayList<CelulaOrar> celuleOrar;
 
 	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
-
-	public void creareOrar(Orar orarFinal, Grupa grupa) {
-		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
-
-	}
 
 	public void creareContGrupa(Grupa grupa) {
 

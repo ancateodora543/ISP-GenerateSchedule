@@ -1,6 +1,7 @@
 package Tema_ISP;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Aplicatie {
@@ -52,12 +53,21 @@ public class Aplicatie {
 		secretar1.adaugareProfesori(prof3);
 		
 		secretar1.creareMaterie(grupa1, DesfasurareMaterie.curs);
-		secretar1.creareCelulaOrar();
 		secretar1.creareMaterie(grupa1, DesfasurareMaterie.laborator);
 		secretar1.creareCelulaOrar();
 		
-		secretar1.afisareOrar();
+		//afisare orar grupa
+		/*secretar1.afisareOrar();
 		secretar1.salvareOrar("date.txt");
+		*/
+		//orar prof - materie
+		/*ArrayList<CelulaOrar> orarProf = prof1.vizualizareOrarMaterieProfesor("SDA");
+		for(CelulaOrar cel : orarProf)
+			cel.afisare();*/
+		
+		ArrayList<CelulaOrar> orarGrupa = grupa1.vizualizareOrarZilnic("Luni");
+		for(CelulaOrar cel : orarGrupa)
+			cel.afisare();
 
 	}
 
