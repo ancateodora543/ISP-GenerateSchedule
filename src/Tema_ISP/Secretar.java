@@ -22,6 +22,8 @@ public class Secretar {
 	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
+	
+	
 
 	public void creareOrar(Orar orarFinal, Grupa grupa) {
 		orarGrupa.put(grupa.getNume(), orarFinal.getOrarZi());
@@ -235,18 +237,6 @@ public class Secretar {
 			if (materieNoua != null)
 				materii.add(materieNoua);
 		}
-	}
-	
-	public void setareMateriiPredefinite() {
-		this.adaugareNumeMateriePredefinita("Matematica");
-		this.adaugareNumeMateriePredefinita("Fizica");
-		this.adaugareNumeMateriePredefinita("Chimie");
-		this.adaugareNumeMateriePredefinita("Baze de date");
-		this.adaugareNumeMateriePredefinita("POO");
-		this.adaugareNumeMateriePredefinita("SDA");
-		this.adaugareNumeMateriePredefinita("IRA");
-		this.adaugareNumeMateriePredefinita("POO");
-		this.adaugareNumeMateriePredefinita("SDA");
 	}
 
 	public void salvareOrar() {

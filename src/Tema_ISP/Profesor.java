@@ -17,11 +17,18 @@ public class Profesor {
 	private String nume;
 	private String user;
 	private String parola;
-	private boolean logat;
+	private boolean logat = false;
 	private ArrayList<String> materii = new ArrayList<String>();
 	private boolean disponibilitate = true;
 	InputStreamReader isr = new InputStreamReader(System.in);
 	BufferedReader br = new BufferedReader(isr);
+
+	
+	public Profesor(String nume) {
+		super();
+		this.nume = nume;
+	}
+
 
 	public void afisareProfesor() {
 		System.out.println("Profesor: " + this.nume);

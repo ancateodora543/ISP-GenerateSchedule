@@ -18,13 +18,40 @@ public class Aplicatie {
 	
 
 	public static void main(String[] args) {
+		
 		//grupe
 		Grupa grupa1 = new Grupa("332","AB");
 		grupa1.adaugareMaterie("IRA");
 		grupa1.adaugareMaterie("Baze de date");
 		grupa1.adaugareMaterie("POO");
+		grupa1.adaugareMaterie("SDA");
+		grupa1.adaugareMaterie("Fizica");
+
+		//profesori
+		Profesor prof1 = new Profesor("Caramihai Mihai");
+		Profesor prof2 = new Profesor("Caramihai Simona");
+		Profesor prof3 = new Profesor("Veizu Ileana");
 		
-		Grupa grupa2 =  new Grupa("324","AC");
+		prof1.adaugareMaterie("SDA");
+		prof1.adaugareMaterie("POO");
+		prof2.adaugareMaterie("IRA");
+		prof2.adaugareMaterie("Fizica");
+		prof3.adaugareMaterie("Baze de date");
+		
+		//secretar
+		Secretar secretar1 = new Secretar();
+		secretar1.adaugareNumeMateriePredefinita("Matematica");
+		secretar1.adaugareNumeMateriePredefinita("Fizica");
+		secretar1.adaugareNumeMateriePredefinita("Chimie");
+		secretar1.adaugareNumeMateriePredefinita("Baze de date");
+		secretar1.adaugareNumeMateriePredefinita("POO");
+		secretar1.adaugareNumeMateriePredefinita("SDA");
+		secretar1.adaugareNumeMateriePredefinita("IRA");
+		secretar1.adaugareNumeMateriePredefinita("POO");
+		secretar1.adaugareNumeMateriePredefinita("SDA");
+		
+		
+		
 		
 		
 		
