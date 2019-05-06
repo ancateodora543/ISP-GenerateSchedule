@@ -18,9 +18,7 @@ public class Aplicatie {
 	
 
 	public static void main(String[] args) {
-		
-<<<<<<< HEAD
-=======
+
 		//grupe
 		Grupa grupa1 = new Grupa("332","AB");
 		grupa1.adaugareMaterie("IRA");
@@ -52,15 +50,6 @@ public class Aplicatie {
 		secretar1.adaugareNumeMateriePredefinita("POO");
 		secretar1.adaugareNumeMateriePredefinita("SDA");
 		
-		
-		
-		
-		
-		
-		
-		
-		
->>>>>>> 08c4c042ee8a28de4c3205a597f705f0bccdc4d0
 	}
 
 }

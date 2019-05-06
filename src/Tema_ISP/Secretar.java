@@ -215,7 +215,6 @@ public class Secretar {
 
 	}
 
-<<<<<<< HEAD
 	public void creareCelulaOrar(Sala sala) {
 		int ora = 0;
 		for (Materie m : materii) {
@@ -244,9 +243,7 @@ public class Secretar {
 		}
 
 	}
-=======
->>>>>>> 08c4c042ee8a28de4c3205a597f705f0bccdc4d0
-	public void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
+ void creareMaterie(Grupa grupa, DesfasurareMaterie desf) {
 		ArrayList<String> materiiGrupa = grupa.getListaMaterii();
 		Materie materieNoua = null;
 		
