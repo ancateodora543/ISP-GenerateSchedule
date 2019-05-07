@@ -68,8 +68,6 @@ public class Aplicatie {
 		ArrayList<CelulaOrar> orarGrupa = grupa1.vizualizareOrarZilnic("Luni");
 		for(CelulaOrar cel : orarGrupa)
 			cel.afisare();
-		System.out.println(secretar1.celuleOrar.size());
-		System.out.println(grupa1.getListaMaterii().size());
 	}
 
 }
