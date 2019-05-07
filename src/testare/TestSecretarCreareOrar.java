@@ -16,20 +16,21 @@ class TestSecretarCreareOrar {
 	@Test
 	void testCreareMaterie() {
 		ArrayList<String> numeMaterii = new ArrayList<String>();
-		Grupa grupa1 = new Grupa("332", "AB");
-		grupa1.adaugareMaterie("IRA");
-		grupa1.adaugareMaterie("Baze de date");
-		grupa1.adaugareMaterie("POO");
-		grupa1.adaugareMaterie("SDA");
-		grupa1.adaugareMaterie("Fizica");
+		Grupa grupa3 = new Grupa("332", "AB");
+		grupa3.adaugareMaterie("IRA");
+		grupa3.adaugareMaterie("Baze de date");
+		grupa3.adaugareMaterie("POO");
+		grupa3.adaugareMaterie("SDA");
+		grupa3.adaugareMaterie("Fizica");
 		Secretar secretar1 = new Secretar();
-		secretar1.creareMaterie(grupa1, DesfasurareMaterie.curs);
-		assertTrue(secretar1.celuleOrar.size() == grupa1.getListaMaterii().size());
-		for (CelulaOrar celula : secretar1.celuleOrar) {
+		secretar1.creareMaterie(grupa3, DesfasurareMaterie.curs);
+		secretar1.creareCelulaOrar();
+		assertSame(Secretar.celuleOrar.size(), grupa3.getListaMaterii().size());
+		for (CelulaOrar celula : Secretar.celuleOrar) {
 			if (!numeMaterii.contains(celula.getMaterie().getNumeMaterie()))
 				numeMaterii.add(celula.getMaterie().getNumeMaterie());
 		}
-		assertTrue(numeMaterii.toArray().equals(grupa1.getListaMaterii().toArray()));
+		assertTrue(numeMaterii.toArray().equals(grupa3.getListaMaterii().toArray()));
 
 	}
 
