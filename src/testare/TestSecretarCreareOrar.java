@@ -80,7 +80,7 @@ class TestSecretarCreareOrar {
 		secretar2.creareMaterie(grupa4, DesfasurareMaterie.curs);
 		secretar2.creareCelulaOrar();
 		
-		
+		assertFalse(numeMaterii.containsAll(grupa4.getListaMaterii()));
 		assertFalse(Secretar.celuleOrar.size() == grupa4.getListaMaterii().size());
 		assertFalse(secretar2.getProfi().containsAll(profesori));
 
