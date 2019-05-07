@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-
 public class Secretar {
 	ArrayList<Profesor> profi = new ArrayList<Profesor>();
 	String[] serii = { "AA", "AB", "AC", "CA", "CB", "CC", "CD" };
@@ -20,32 +19,51 @@ public class Secretar {
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
 
-	public void creareContGrupa(Grupa grupa) {
+	public boolean creareContGrupa(Grupa grupa) {
 
 		String u = null;
 		String p = "parolaGrupa";
-
+		boolean okay = false;
 		if (grupa.getUser() == null) {
 			u = grupa.getNume().replaceAll(" ", "").toLowerCase();
-			if (Aplicatie.getConturi().containsKey(u))
-				u = u + u.charAt(u.length() - 1);
-		}
+			if (Aplicatie.getConturi().containsKey(u)) {
+				System.out.println("Contul exista deja");
+				okay = false;
+			}else {
+				Aplicatie.getConturi().put(u, p);
+				okay = true;
+			}
+		} else {
+			u = grupa.getUser();
+			if (Aplicatie.getConturi().containsKey(u)) {
+				System.out.println("Contul exista deja");
+				okay = false;
+			}
+			else {
+				Aplicatie.getConturi().put(u, p);
+				okay = true;
+			}
 
-		Aplicatie.getConturi().put(u, p);
+		}
+		return okay;
 	}
 
-	public void stergereContGrupa(Grupa grupa) {
+	public boolean stergereContGrupa(Grupa grupa) {
 
 		String user = grupa.getUser();
 		String pass = grupa.getParola();
-		if (user == null)
+		boolean okay = false;
+		if (user == null) {
 			System.out.println("Nu exista cont");
+		}
 		else {
 			Aplicatie.getConturi().remove(user);
 			System.out.println("Contul a fost sters");
 			user = null;
 			pass = null;
+			okay = true;
 		}
+		return okay;
 	}
 
 	public void modificareContStudent(Grupa grupa, String criteriu, String valoareNoua) {
@@ -78,23 +96,42 @@ public class Secretar {
 		}
 	}
 
-	public void creareContProfesor(Profesor prof) {
+	public boolean creareContProfesor(Profesor prof) {
 		String u = null;
 		String p = "parolaProf";
-
+		boolean okay = false;
 		if (prof.getUser() == null) {
 			u = prof.getNume().replaceAll(" ", "").toLowerCase();
-			if (Aplicatie.getConturi().containsKey(u))
-				u = u + u.charAt(u.length() - 1);
+			if (Aplicatie.getConturi().containsKey(u)) {
+				System.out.println("Contul exista deja");
+				okay = false;}
+		else {
+			Aplicatie.getConturi().put(u, p);
+			okay = true;
+		}
+		}
+		else
+		{
+			u = prof.getUser();
+			if(Aplicatie.getConturi().containsKey(u)) {
+				System.out.println("Contul exista deja");
+				okay = false;
+			}
+			else
+			{
+				Aplicatie.getConturi().put(u, p);
+				okay = true;
+			}
 		}
 
-		Aplicatie.getConturi().put(u, p);
+		return okay;
 
 	}
 
-	public void stergereContProfesor(Profesor profesor) {
+	public boolean stergereContProfesor(Profesor profesor) {
 		String user = profesor.getUser();
-		String pass =  profesor.getParola();
+		String pass = profesor.getParola();
+		boolean okay = false;
 		if (user == null)
 			System.out.println("Nu exista cont");
 		else {
@@ -102,8 +139,10 @@ public class Secretar {
 			System.out.println("Contul a fost sters");
 			user = null;
 			pass = null;
-					
+			okay = true;
+
 		}
+		return okay;
 	}
 
 	public void modificareContProfesor(Profesor profesor, String criteriu, String valoareNoua) {
@@ -126,20 +165,25 @@ public class Secretar {
 	}
 
 	public boolean validareGrupa(String camp, String valoare) {
-		boolean rezultat = true;
-		boolean ok = false;
+		boolean rezultat = false;
 
 		if (camp.equals("nume"))
-			if (valoare.contains("[a-zA-Z]"))
+			if (valoare.matches("[a-zA-Z]+"))
 				rezultat = false;
+			else
+				rezultat = true;
 
-		if (camp.equals("serie")) {
+		else if (camp.equals("serie")) {
 			for (String serie : serii)
-				if (valoare.equals(serie))
-					ok = true;
+				if (serie.equals(valoare)) {
+					rezultat = true;
+					break;
+				}
+				else
+				{
+					rezultat = false;
+				}
 		}
-		if (ok == false)
-			rezultat = false;
 
 		return rezultat;
 	}
@@ -148,9 +192,9 @@ public class Secretar {
 		boolean rezultat = true;
 
 		if (camp.equals("nume"))
-			if (!valoare.contains("[a-zA-Z]"))
+			if (!valoare.matches("[a-zA-Z]+"))
 				rezultat = false;
-
+				
 		return rezultat;
 	}
 
@@ -179,35 +223,8 @@ public class Secretar {
 			System.out.println("Sala exista deja");
 	}
 
-	// parcurgem lista cu materiile create si pentru fiecare materie de acolo o sa
-	// creem o celula de orar
-	public void creareSalaOrar() {
 
-		for (String numeSala : numeSali) {
-			Sala salaNoua = new Sala();
-			salaNoua.adaugareNumeSala(numeSala);
-			boolean ok = true;
-			for (Sala sala : sali) {
-				if (sala.getNumeSala().equals(numeSala)) {
-					// aici voiam sa vad cand sala asta e ocupata (exista mai multe obiecte de tip
-					// Sala pentru acelasi
-					// nume de sala => dar nu stiu cum sa fac asta
-					System.out.println("Sala este deja folosita!");
-					ok = false;
-					break;
-				} else {
-
-				}
-
-			}
-			if (ok) {
-				sali.add(salaNoua);
-			}
-		}
-
-	}
-
-	public void creareCelulaOrar() {
+public void creareCelulaOrar() {
 		int ora = 0;
 		for (Materie m : materii) {
 			CelulaOrar celula = new CelulaOrar(m);
@@ -344,7 +361,7 @@ public class Secretar {
 			filePrint.println("Profesor: " + celula.getMaterie().getProfesor().getNume());
 			filePrint.println("Zi: " + celula.getSala().getZi());
 			filePrint.println("Ora: " + celula.getSala().getOraInceput() + "--" + celula.getSala().getOraSfarsit());
-			filePrint.println("Tip desfasurare: " + celula.getMaterie().getModDesfasurareMaterie() );
+			filePrint.println("Tip desfasurare: " + celula.getMaterie().getModDesfasurareMaterie());
 			filePrint.println();
 
 		}
@@ -372,7 +389,7 @@ public class Secretar {
 	public void setCeluleOrar(ArrayList<CelulaOrar> celuleOrar) {
 		this.celuleOrar = celuleOrar;
 	}
-	
+
 	public void adaugareProfesori(Profesor p) {
 		profi.add(p);
 	}

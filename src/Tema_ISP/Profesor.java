@@ -28,6 +28,14 @@ public class Profesor {
 		this.nume = nume;
 	}
 
+	
+	public Profesor(String nume, String user) {
+		super();
+		this.nume = nume;
+		this.user = user;
+	}
+
+
 	public void afisareProfesor() {
 		System.out.println("Profesor: " + this.nume);
 	}
