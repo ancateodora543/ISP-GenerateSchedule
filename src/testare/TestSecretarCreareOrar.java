@@ -83,7 +83,8 @@ class TestSecretarCreareOrar {
 		assertFalse(numeMaterii.containsAll(grupa4.getListaMaterii()));
 		assertFalse(Secretar.celuleOrar.size() == grupa4.getListaMaterii().size());
 		assertFalse(secretar2.getProfi().containsAll(profesori));
-
+		
+		
 	}
 
 }
