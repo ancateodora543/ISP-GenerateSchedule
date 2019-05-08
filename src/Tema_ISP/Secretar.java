@@ -226,8 +226,6 @@ public class Secretar {
 					celuleOrar.add(celula);
 				}
 			}
-			// sali
-
 			int oreLuni = 0;
 			int oreMarti = 0;
 			int oreMiercuri = 0;

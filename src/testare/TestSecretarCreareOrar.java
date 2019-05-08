@@ -50,6 +50,7 @@ class TestSecretarCreareOrar {
 
 		secretar1.creareMaterie(grupa3, DesfasurareMaterie.curs);
 		secretar1.creareCelulaOrar();
+		assertNotNull(secretar1.celuleOrar);
 
 		assertSame(Secretar.celuleOrar.size(), grupa3.getListaMaterii().size());
 		for (CelulaOrar celula : Secretar.celuleOrar) {
@@ -81,7 +82,7 @@ class TestSecretarCreareOrar {
 		assertFalse(numeMaterii.containsAll(grupa4.getListaMaterii()));
 		assertFalse(Secretar.celuleOrar.size() == grupa4.getListaMaterii().size());
 		assertFalse(secretar2.getProfi().containsAll(profesori));
-
+		
 	}
 
 }
