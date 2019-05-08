@@ -36,7 +36,6 @@ public class Aplicatie {
 		prof2.adaugareMaterie("IRA");
 		prof2.adaugareMaterie("Fizica");
 		prof3.adaugareMaterie("Baze de date");
-	
 
 		// secretar
 		Secretar secretar1 = new Secretar();
@@ -51,22 +50,23 @@ public class Aplicatie {
 		secretar1.adaugareProfesori(prof1);
 		secretar1.adaugareProfesori(prof2);
 		secretar1.adaugareProfesori(prof3);
-		
+
 		secretar1.creareMaterie(grupa1, DesfasurareMaterie.curs);
-		//secretar1.creareMaterie(grupa1, DesfasurareMaterie.laborator);
+		// secretar1.creareMaterie(grupa1, DesfasurareMaterie.laborator);
 		secretar1.creareCelulaOrar();
-		
-		//afisare orar grupa
-		/*secretar1.afisareOrar();
-		secretar1.salvareOrar("date.txt");
-		*/
-		//orar prof - materie
-		/*ArrayList<CelulaOrar> orarProf = prof1.vizualizareOrarMaterieProfesor("SDA");
-		for(CelulaOrar cel : orarProf)
-			cel.afisare();*/
-		
+
+		// afisare orar grupa
+		/*
+		 * secretar1.afisareOrar(); secretar1.salvareOrar("date.txt");
+		 */
+		// orar prof - materie
+		/*
+		 * ArrayList<CelulaOrar> orarProf = prof1.vizualizareOrarMaterieProfesor("SDA");
+		 * for(CelulaOrar cel : orarProf) cel.afisare();
+		 */
+
 		ArrayList<CelulaOrar> orarGrupa = grupa1.vizualizareOrarZilnic("Luni");
-		for(CelulaOrar cel : orarGrupa)
+		for (CelulaOrar cel : orarGrupa)
 			cel.afisare();
 	}
 

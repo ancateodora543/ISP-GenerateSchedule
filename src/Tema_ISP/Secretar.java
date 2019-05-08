@@ -11,16 +11,11 @@ public class Secretar {
 	String[] serii = { "AA", "AB", "AC", "CA", "CB", "CC", "CD" };
 
 	ArrayList<Materie> materii = new ArrayList<Materie>();
-
-	ArrayList<Sala> sali = new ArrayList<Sala>();
 	public static ArrayList<CelulaOrar> celuleOrar;
 
 	static ArrayList<String> numeMateriiPredefinite = new ArrayList<String>();
 	ArrayList<String> numeSali = new ArrayList<String>();
 	String[] zileSaptamana = { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
-	
-	
-	
 
 	public ArrayList<Profesor> getProfi() {
 		return profi;
@@ -40,7 +35,7 @@ public class Secretar {
 			if (Aplicatie.getConturi().containsKey(u)) {
 				System.out.println("Contul exista deja");
 				okay = false;
-			}else {
+			} else {
 				Aplicatie.getConturi().put(u, p);
 				okay = true;
 			}
@@ -49,8 +44,7 @@ public class Secretar {
 			if (Aplicatie.getConturi().containsKey(u)) {
 				System.out.println("Contul exista deja");
 				okay = false;
-			}
-			else {
+			} else {
 				Aplicatie.getConturi().put(u, p);
 				okay = true;
 			}
@@ -66,8 +60,7 @@ public class Secretar {
 		boolean okay = false;
 		if (user == null) {
 			System.out.println("Nu exista cont");
-		}
-		else {
+		} else {
 			Aplicatie.getConturi().remove(user);
 			System.out.println("Contul a fost sters");
 			user = null;
@@ -115,21 +108,17 @@ public class Secretar {
 			u = prof.getNume().replaceAll(" ", "").toLowerCase();
 			if (Aplicatie.getConturi().containsKey(u)) {
 				System.out.println("Contul exista deja");
-				okay = false;}
-		else {
-			Aplicatie.getConturi().put(u, p);
-			okay = true;
-		}
-		}
-		else
-		{
+				okay = false;
+			} else {
+				Aplicatie.getConturi().put(u, p);
+				okay = true;
+			}
+		} else {
 			u = prof.getUser();
-			if(Aplicatie.getConturi().containsKey(u)) {
+			if (Aplicatie.getConturi().containsKey(u)) {
 				System.out.println("Contul exista deja");
 				okay = false;
-			}
-			else
-			{
+			} else {
 				Aplicatie.getConturi().put(u, p);
 				okay = true;
 			}
@@ -189,9 +178,7 @@ public class Secretar {
 				if (serie.equals(valoare)) {
 					rezultat = true;
 					break;
-				}
-				else
-				{
+				} else {
 					rezultat = false;
 				}
 		}
@@ -205,7 +192,7 @@ public class Secretar {
 		if (camp.equals("nume"))
 			if (!valoare.matches("[a-zA-Z]+"))
 				rezultat = false;
-				
+
 		return rezultat;
 	}
 
@@ -226,16 +213,6 @@ public class Secretar {
 		else
 			System.out.println("Materia exista deja");
 	}
-
-	public void adaugareNumeSala(String sala) {
-		if (!numeSali.contains(sala))
-			numeMateriiPredefinite.add(sala);
-		else
-			System.out.println("Sala exista deja");
-	}
-
-
-
 
 	public void creareCelulaOrar() {
 		int ora = 0;

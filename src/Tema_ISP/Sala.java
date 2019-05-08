@@ -13,14 +13,10 @@ public class Sala {
 			this.disponibilitate = false;
 
 	}
-	
-	
 
 	public Sala() {
 		super();
 	}
-
-
 
 	public Sala(String zi, String oraInceput, String numeSala) {
 		super();
@@ -28,8 +24,6 @@ public class Sala {
 		this.oraInceput = oraInceput;
 		this.numeSala = numeSala;
 	}
-
-
 
 	public String getZi() {
 		return zi;
@@ -84,5 +78,4 @@ public class Sala {
 		return disponibilitate;
 	}
 
-	
 };

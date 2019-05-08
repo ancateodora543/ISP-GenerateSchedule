@@ -66,7 +66,8 @@ public class Grupa {
 
 	public ArrayList<CelulaOrar> vizualizareOrarZilnic(String zi) {
 		ArrayList<CelulaOrar> orarZiGrupa = new ArrayList<CelulaOrar>();
-		if(zi.equals("Luni")||zi.equals("Marti")||zi.equals("Miercuri")||zi.equals("Joi")||zi.equals("Vineri")) {
+		if (zi.equals("Luni") || zi.equals("Marti") || zi.equals("Miercuri") || zi.equals("Joi")
+				|| zi.equals("Vineri")) {
 			for (CelulaOrar celula : Secretar.celuleOrar)
 				if (celula.getSala().getZi().equals(zi) && celula.getMaterie().getGrupa() == this)
 					orarZiGrupa.add(celula);
@@ -77,12 +78,11 @@ public class Grupa {
 
 	public ArrayList<CelulaOrar> vizualizareOrarSaptamana() {
 		ArrayList<CelulaOrar> orarGrupa = new ArrayList<CelulaOrar>();
-		for(CelulaOrar celula : Secretar.celuleOrar)
-			if(celula.getMaterie().getGrupa() ==  this)
+		for (CelulaOrar celula : Secretar.celuleOrar)
+			if (celula.getMaterie().getGrupa() == this)
 				orarGrupa.add(celula);
 		return orarGrupa;
 	}
-
 
 	public void adaugareMaterie(String materie) {
 		this.listaMaterii.add(materie);
@@ -124,6 +124,5 @@ public class Grupa {
 	public void setListaMaterii(ArrayList<String> listaMaterii) {
 		this.listaMaterii = listaMaterii;
 	}
-	
 
 };

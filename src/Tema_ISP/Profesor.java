@@ -28,13 +28,11 @@ public class Profesor {
 		this.nume = nume;
 	}
 
-	
 	public Profesor(String nume, String user) {
 		super();
 		this.nume = nume;
 		this.user = user;
 	}
-
 
 	public void afisareProfesor() {
 		System.out.println("Profesor: " + this.nume);
@@ -87,7 +85,8 @@ public class Profesor {
 
 	public ArrayList<CelulaOrar> vizualizareOrarZi(String zi) {
 		ArrayList<CelulaOrar> orarZiProfesor = new ArrayList<CelulaOrar>();
-		if(zi.equals("Luni")||zi.equals("Marti")||zi.equals("Miercuri")||zi.equals("Joi")||zi.equals("Vineri")) {
+		if (zi.equals("Luni") || zi.equals("Marti") || zi.equals("Miercuri") || zi.equals("Joi")
+				|| zi.equals("Vineri")) {
 			for (CelulaOrar celula : Secretar.celuleOrar)
 				if (celula.getSala().getZi().equals(zi) && celula.getMaterie().getProfesor() == this)
 					orarZiProfesor.add(celula);
@@ -98,10 +97,10 @@ public class Profesor {
 
 	public ArrayList<CelulaOrar> vizualizareOrarProfesor() {
 		ArrayList<CelulaOrar> orarProfesor = new ArrayList<CelulaOrar>();
-		for(CelulaOrar celula : Secretar.celuleOrar)
-			if(celula.getMaterie().getProfesor() == this)
+		for (CelulaOrar celula : Secretar.celuleOrar)
+			if (celula.getMaterie().getProfesor() == this)
 				orarProfesor.add(celula);
-		
+
 		return orarProfesor;
 	}
 

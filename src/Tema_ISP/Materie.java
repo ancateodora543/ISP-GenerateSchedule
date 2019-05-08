@@ -7,13 +7,12 @@ public class Materie {
 	private DesfasurareMaterie modDesfasurareMaterie;
 	private Grupa grupa;
 	private Profesor profesor;
-	
-	
+
 	public Materie(Grupa grupa, String nume, DesfasurareMaterie desf, Profesor prof) {
-		this(grupa,nume,desf);
+		this(grupa, nume, desf);
 		this.profesor = prof;
 	}
-	
+
 	public Materie(Grupa grupa, String nume, DesfasurareMaterie desf) {
 		this.grupa = grupa;
 		this.numeMaterie = nume;
@@ -75,8 +74,5 @@ public class Materie {
 	public void setDurata(int durata) {
 		this.durata = durata;
 	}
-	
-	
 
-	
 };
