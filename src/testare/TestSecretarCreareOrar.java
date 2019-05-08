@@ -50,8 +50,9 @@ class TestSecretarCreareOrar {
 
 		secretar1.creareMaterie(grupa3, DesfasurareMaterie.curs);
 		secretar1.creareCelulaOrar();
+		//verificam daca s-a generat un orar, si daca orarul este null
 		assertNotNull(secretar1.celuleOrar);
-
+		//aici verificam daca orarul generat este egal cu orarul grupei
 		assertSame(Secretar.celuleOrar.size(), grupa3.getListaMaterii().size());
 		for (CelulaOrar celula : Secretar.celuleOrar) {
 			if (!numeMaterii.contains(celula.getMaterie().getNumeMaterie()))
@@ -59,7 +60,9 @@ class TestSecretarCreareOrar {
 			if (!profesori.contains(celula.getMaterie().getProfesor()))
 				profesori.add(celula.getMaterie().getProfesor());
 		}
+		//verificam daca pentru fiecare materie s-a generat o celula de orar
 		assertTrue(numeMaterii.containsAll(grupa3.getListaMaterii()));
+		//verificam daca toti profesorii din Orar exista 
 		assertTrue(secretar1.getProfi().containsAll(profesori));
 
 		Secretar secretar2 = new Secretar();
@@ -75,12 +78,15 @@ class TestSecretarCreareOrar {
 		Profesor prof4 = new Profesor("Anca Solot");
 		prof4.adaugareMaterie("SDA");
 		secretar2.adaugareProfesori(prof4);
-
+		
+		
 		secretar2.creareMaterie(grupa4, DesfasurareMaterie.curs);
 		secretar2.creareCelulaOrar();
 
+		//pentru acest caz nu pentru toate materiile au fost create celule orar pentru ca grupa are materii care nu apartin materiilor predefinite
 		assertFalse(numeMaterii.containsAll(grupa4.getListaMaterii()));
 		assertFalse(Secretar.celuleOrar.size() == grupa4.getListaMaterii().size());
+		//acest test este false deoarece nu exista pentru aceasta grupa un profesor care sa predea materiile aferente
 		assertFalse(secretar2.getProfi().containsAll(profesori));
 		
 	}

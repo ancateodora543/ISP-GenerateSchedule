@@ -52,13 +52,13 @@ public class Aplicatie {
 		secretar1.adaugareProfesori(prof3);
 
 		secretar1.creareMaterie(grupa1, DesfasurareMaterie.curs);
-		// secretar1.creareMaterie(grupa1, DesfasurareMaterie.laborator);
+		secretar1.creareMaterie(grupa1, DesfasurareMaterie.laborator);
 		secretar1.creareCelulaOrar();
-
-		// afisare orar grupa
-		/*
-		 * secretar1.afisareOrar(); secretar1.salvareOrar("date.txt");
-		 */
+		
+		//orar general
+		secretar1.afisareOrar();
+		secretar1.salvareOrar("date.txt");
+		 
 		// orar prof - materie
 		/*
 		 * ArrayList<CelulaOrar> orarProf = prof1.vizualizareOrarMaterieProfesor("SDA");
@@ -68,6 +68,6 @@ public class Aplicatie {
 		ArrayList<CelulaOrar> orarGrupa = grupa1.vizualizareOrarZilnic("Luni");
 		for (CelulaOrar cel : orarGrupa)
 			cel.afisare();
+	
 	}
-
 }

@@ -54,6 +54,7 @@ class TestSecretarVizualizareOrar {
 		secretar1.creareMaterie(grupa3, DesfasurareMaterie.curs);
 		secretar1.creareCelulaOrar();
 		Grupa grupa4 = new Grupa("331", "AC");
+		//verificam daca orar generat de secretar este acelasi cu orarul grupei3
 		assertEquals(Secretar.celuleOrar, grupa3.vizualizareOrarSaptamana());
 		assertNotEquals(Secretar.celuleOrar, grupa4.vizualizareOrarSaptamana());
 
@@ -62,12 +63,15 @@ class TestSecretarVizualizareOrar {
 				orarZi.add(celule);
 			}
 		}
-
+		//verificam daca orarZi, care reprezinta orarul zilei de Luni, este egal cu orarul generat de metoda vizualizareOrarZilnic
+		//verificam daca orarZi este la fel cu orarulZilei de luni, sa nu fie egal cu orarul unei alte zile, si daca ziua data ca parametru este valida
+		
 		assertEquals(orarZi, grupa3.vizualizareOrarZilnic("Luni"));
 		assertNotEquals(orarZi, grupa3.vizualizareOrarZilnic("Marti"));
 		assertNotEquals(orarZi, grupa3.vizualizareOrarZilnic("Sambata"));
 		assertNotEquals(orarZi, grupa4.vizualizareOrarZilnic("Luni"));
 
+	
 		for (CelulaOrar celula : Secretar.celuleOrar) {
 			if (celula.getMaterie().getProfesor() == prof1) {
 				profiOrar.add(celula);
@@ -77,19 +81,22 @@ class TestSecretarVizualizareOrar {
 
 			}
 		}
-
+	
 		for (CelulaOrar celula : Secretar.celuleOrar) {
 			if (celula.getMaterie().getNumeMaterie().equals("SDA") && celula.getMaterie().getProfesor() == prof1) {
 				profMaterii.add(celula);
 			}
 		}
-
+		///verificam daca Orarul unui profesor, unde profesorul este egal cu prof1, este egal cu orarul generat de metoda vizualizareOrarProfesor
 		assertEquals(profiOrar, prof1.vizualizareOrarProfesor());
 		assertNotEquals(profiOrar, prof2.vizualizareOrarProfesor());
+		// verificam daca Orarul unui profesor în ziua de Luni, unde profesorul este egal cu prof1, este egal cu orarul generat de metoda vizualizareOrarZi
 		assertNotEquals(profiOrar, prof2.vizualizareOrarZi("Luni"));
 		assertEquals(profiOrarZi, prof1.vizualizareOrarZi("Luni"));
 		assertNotEquals(profiOrarZi, prof1.vizualizareOrarZi("Sambata"));
 		assertNotEquals(profiOrarZi, prof1.vizualizareOrarZi("Marti"));
+		
+		//verificam daca profesorul preda materia respectiva
 		assertNotEquals(profMaterii, prof1.vizualizareOrarMaterieProfesor("IRA"));
 		assertNotEquals(profMaterii, prof1.vizualizareOrarMaterieProfesor("Franceza"));
 		assertEquals(profMaterii, prof1.vizualizareOrarMaterieProfesor("SDA"));
